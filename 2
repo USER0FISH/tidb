@@ -1,0 +1,372 @@
+expression/bench_test.go:		if err := j.UnmarshalJSON([]byte(fmt.Sprintf(`{"key":%v}`, g.randGen.Int()))); err != nil {
+expression/bench_test.go:	if err := j.UnmarshalJSON([]byte(g.jsonStr)); err != nil {
+expression/bench_test.go:	if err := j.UnmarshalJSON([]byte(fmt.Sprintf(`{"key":%v}`, g.randGen.Int()))); err != nil {
+expression/builtin_info.go:	err = json.Unmarshal([]byte(digestsStr), &digests)
+expression/builtin_miscellaneous_vec.go:		err = u.UnmarshalBinary([]byte(val))
+expression/expr_to_pb_test.go:	err = proto.Unmarshal(expr.Val, metadata)
+expression/expr_to_pb_test.go:	err = proto.Unmarshal(expr.Val, metadata)
+expression/builtin_other_vec_generated_test.go:		if err := j.UnmarshalJSON([]byte(jsonStr)); err != nil {
+expression/builtin_miscellaneous.go:	err = u.UnmarshalBinary([]byte(val))
+expression/generator/other_vec.go:		if err := j.UnmarshalJSON([]byte(jsonStr)); err != nil {
+expression/builtin_vectorized_test.go:		if err := j.UnmarshalJSON([]byte(fmt.Sprintf(`{"key":%v}`, 2*ret.GetInt64()))); err != nil {
+expression/builtin_vectorized_test.go:	if err := j.UnmarshalJSON([]byte(fmt.Sprintf(`{"key":%v}`, 2*ret.GetInt64()))); err != nil {
+expression/builtin_vectorized_test.go:			if err := j.UnmarshalJSON([]byte(fmt.Sprintf(`{"key":%v}`, i))); err != nil {
+build/linter/allrevive/analyzer.go:	err = json.Unmarshal([]byte(output), &results)
+build/linter/revive/analyzer.go:	err = json.Unmarshal([]byte(output), &results)
+domain/infosync/placement_manager.go:		err = json.Unmarshal(res, bundle)
+domain/infosync/placement_manager.go:		err = json.Unmarshal(res, &bundles)
+domain/infosync/schedule_manager.go:	if err = json.Unmarshal(ret, &schedule); err != nil {
+domain/infosync/region.go:		_ = json.Unmarshal(res, &state)
+domain/infosync/label_manager.go:		err = json.Unmarshal(res, &rules)
+domain/infosync/label_manager.go:		err = json.Unmarshal(res, &rules)
+domain/infosync/label_manager.go:		err := json.Unmarshal(labelRule, &rule)
+domain/infosync/label_manager.go:				err := json.Unmarshal(labelRule, &rule)
+domain/infosync/info.go:// Unmarshal `ServerInfo` from bytes.
+domain/infosync/info.go:func (info *ServerInfo) Unmarshal(v []byte) error {
+domain/infosync/info.go:	if err := json.Unmarshal(v, info); err != nil {
+domain/infosync/info.go:		err = json.Unmarshal(kv.Value, &topo)
+domain/infosync/info.go:		err = json.Unmarshal([]byte(values), &prometheus)
+domain/infosync/info.go:			err = info.Unmarshal(kv.Value)
+domain/infosync/info_test.go:	err = json.Unmarshal(resp.Kvs[0].Value, &ret)
+domain/infosync/tiflash_manager.go:		if err = json.Unmarshal(res, &groupConfig); err != nil {
+domain/infosync/tiflash_manager.go:	err = json.Unmarshal(res, &rules)
+domain/infosync/tiflash_manager.go:	err = json.Unmarshal(res, stats)
+domain/infosync/tiflash_manager.go:	err = json.Unmarshal(res, &storesStat)
+store/helper/helper.go:	err = json.Unmarshal(buf.Bytes(), &rules)
+domain/domain.go:// increase the memory usage when calling json.Unmarshal(), which would cause OOM,
+store/driver/txn/error.go:	err := json.Unmarshal([]byte(rawRetry), &key)
+store/pdtypes/typeutil.go:// UnmarshalJSON parses a JSON string into the byte size.
+store/pdtypes/typeutil.go:func (b *ByteSize) UnmarshalJSON(text []byte) error {
+store/pdtypes/typeutil.go:// UnmarshalText parses a Toml string into the byte size.
+store/pdtypes/typeutil.go:func (b *ByteSize) UnmarshalText(text []byte) error {
+store/pdtypes/typeutil.go:// UnmarshalJSON parses a JSON string into the duration.
+store/pdtypes/typeutil.go:func (d *Duration) UnmarshalJSON(text []byte) error {
+store/pdtypes/typeutil.go:// UnmarshalText parses a TOML string into the duration.
+store/pdtypes/typeutil.go:func (d *Duration) UnmarshalText(text []byte) error {
+store/pdtypes/typeutil.go:// UnmarshalJSON parses a JSON string into the byte size.
+store/pdtypes/typeutil.go:func (s *StringSlice) UnmarshalJSON(text []byte) error {
+executor/hot_regions_history_table_test.go:	err = json.Unmarshal(data, req)
+executor/coprocessor.go:	err := proto.Unmarshal(req.Data, dagReq)
+executor/show_placement_labels_test.go:		err = bj.UnmarshalJSON(d)
+executor/executor_required_rows_test.go:			require.NoError(t, j.UnmarshalJSON([]byte(fmt.Sprintf(`{"%v":%v}`, 123, 123))))
+executor/executor_required_rows_test.go:			require.NoError(t, j.UnmarshalJSON([]byte(fmt.Sprintf(`{"%v":%v}`, 456, 456))))
+executor/infoschema_reader.go:		if err = bj.UnmarshalJSON(data); err != nil {
+executor/infoschema_reader.go:	err = json.Unmarshal(body, &result)
+executor/show_placement.go:	err = gjson.Unmarshal(data, &labels)
+executor/show_placement.go:		err = valuesJSON.UnmarshalJSON(d)
+br/pkg/streamhelper/advancer_cliext.go:	if err := proto.Unmarshal(event.Kv.Value, te.Info); err != nil {
+br/pkg/streamhelper/client.go:	err = proto.Unmarshal(resp.Kvs[0].Value, &taskInfo)
+br/pkg/streamhelper/client.go:	err = proto.Unmarshal(resps.Responses[0].GetResponseRange().Kvs[0].Value, &taskInfo)
+br/pkg/streamhelper/client.go:		err = proto.Unmarshal(kv.Value, &tasks[idx].Info)
+br/pkg/streamhelper/client.go:		if err := proto.Unmarshal(r.Value, &lastErr); err != nil {
+br/pkg/pdutil/utils.go:	err = json.Unmarshal(buf.Bytes(), &rules)
+br/pkg/pdutil/pd.go:		err = json.Unmarshal(v, &regionsMap)
+br/pkg/pdutil/pd.go:		err = json.Unmarshal(v, &store)
+br/pkg/pdutil/pd.go:		err = json.Unmarshal(v, &d)
+br/pkg/pdutil/pd.go:		err = json.Unmarshal(v, &cfg)
+br/pkg/pdutil/pd.go:		err = json.Unmarshal(v, &d)
+br/pkg/backup/client_test.go:	err = proto.Unmarshal(metaBytes, mockMeta)
+br/pkg/backup/client_test.go:	err = json.Unmarshal(allDDLJobsBytes, &allDDLJobs)
+br/pkg/restore/search.go:			err = m.Unmarshal(b)
+br/pkg/restore/db_test.go:	err = proto.Unmarshal(metaBytes, mockMeta)
+br/pkg/restore/db_test.go:	err = json.Unmarshal(allDDLJobsBytes, &allDDLJobs)
+br/pkg/restore/db_test.go:	err = proto.Unmarshal(metaBytes, mockMeta)
+br/pkg/restore/db_test.go:	err = json.Unmarshal(allDDLJobsBytes, &allDDLJobs)
+br/pkg/backup/schema_test.go:	err = proto.Unmarshal(metaBytes, mockMeta)
+br/pkg/restore/stream_metas.go:	err := stream.FastUnmarshalMetaData(ctx, s, func(path string, raw []byte) error {
+br/pkg/checksum/executor.go:		if err = checksum.Unmarshal(data); err != nil {
+br/pkg/checksum/executor.go:		if err := proto.Unmarshal(req.Data, rawReq); err != nil {
+br/pkg/restore/client.go:			err = json.Unmarshal(ddls, &ddlJobs)
+br/pkg/restore/client.go:		err := json.Unmarshal(p.Info, policyInfo)
+br/pkg/restore/client.go:	err := stream.FastUnmarshalMetaData(ctx, rc.storage, func(path string, raw []byte) error {
+br/pkg/restore/client.go:	err := stream.FastUnmarshalMetaData(ctx, rc.storage, func(path string, raw []byte) error {
+br/pkg/restore/split/client.go:	err = json.Unmarshal(b, &rule)
+br/pkg/task/common.go:	if err = proto.Unmarshal(decryptBackupMeta, backupMeta); err != nil {
+br/pkg/task/stream.go:	if err = backupMeta.Unmarshal(metaData); err != nil {
+br/pkg/task/stream.go:	if err = backupmeta.Unmarshal(metaData); err != nil {
+br/pkg/task/stream.go:	err := stream.FastUnmarshalMetaData(ctx, s, func(path string, raw []byte) error {
+br/pkg/task/stream.go:	if err = backupMeta.Unmarshal(metaData); err != nil {
+br/pkg/utils/progress.go:	if err := json.Unmarshal(p, &info); err != nil {
+br/pkg/utils/json.go:// UnmarshalBackupMeta converts the prettied JSON format of backupmeta
+br/pkg/utils/json.go:func UnmarshalBackupMeta(data []byte) (*backuppb.BackupMeta, error) {
+br/pkg/utils/json.go:	if err := json.Unmarshal(data, jMeta); err != nil {
+br/pkg/utils/json.go:	if err := json.Unmarshal(schema.Db, &result.DB); err != nil {
+br/pkg/utils/json.go:		if err := json.Unmarshal(schema.Table, &result.Table); err != nil {
+br/pkg/utils/json.go:	if err := json.Unmarshal(meta.Ddls, &result.DDLs); err != nil {
+br/pkg/utils/json_test.go:		meta, err := UnmarshalBackupMeta(testMetaJSON)
+br/pkg/stream/stream_mgr.go:	err := meta.Unmarshal(rawMetaData)
+br/pkg/stream/stream_mgr.go:	err := meta.Unmarshal(rawMetaData)
+br/pkg/stream/stream_mgr.go:// FastUnmarshalMetaData used a 128 worker pool to speed up
+br/pkg/stream/stream_mgr.go:func FastUnmarshalMetaData(
+br/pkg/stream/rewrite_meta_rawkv_test.go:	err = json.Unmarshal(newValue, &DBInfo)
+br/pkg/stream/rewrite_meta_rawkv_test.go:	err = json.Unmarshal(newValue, &DBInfo)
+br/pkg/stream/rewrite_meta_rawkv_test.go:	err = json.Unmarshal(newValue, &tableInfo)
+br/pkg/stream/rewrite_meta_rawkv_test.go:	err = json.Unmarshal(newValue, &tableInfo)
+br/pkg/stream/rewrite_meta_rawkv_test.go:	err = json.Unmarshal(newValue, &tableInfo)
+br/pkg/stream/rewrite_meta_rawkv_test.go:	err = json.Unmarshal(newValue, &tableInfo)
+br/pkg/stream/rewrite_meta_rawkv_test.go:	err = json.Unmarshal(value, &tableInfo)
+br/pkg/stream/rewrite_meta_rawkv_test.go:	err = json.Unmarshal(value, &tableInfo)
+br/pkg/stream/rewrite_meta_rawkv.go:	if err := json.Unmarshal(value, oldDBInfo); err != nil {
+br/pkg/stream/rewrite_meta_rawkv.go:	if err := json.Unmarshal(value, &tableInfo); err != nil {
+br/pkg/config/ebs.go:	err = json.Unmarshal(data, c)
+br/pkg/config/ebs.go:	err = json.Unmarshal(metaBytes, metaInfo)
+br/pkg/lightning/checkpoints/checkpoints_test.go:func TestCheckpointMarshallUnmarshall(t *testing.T) {
+br/pkg/lightning/restore/meta_manager.go:			err = json.Unmarshal([]byte(cfgStr), &pausedCfg)
+br/pkg/lightning/checkpoints/glue_checkpoint.go:				if err := json.Unmarshal(colPerm, &value.ColumnPermutation); err != nil {
+br/pkg/lightning/checkpoints/checkpointspb/file_checkpoints.pb.go:func (m *CheckpointsModel) XXX_Unmarshal(b []byte) error {
+br/pkg/lightning/checkpoints/checkpointspb/file_checkpoints.pb.go:	return m.Unmarshal(b)
+br/pkg/lightning/checkpoints/checkpointspb/file_checkpoints.pb.go:func (m *TaskCheckpointModel) XXX_Unmarshal(b []byte) error {
+br/pkg/lightning/checkpoints/checkpointspb/file_checkpoints.pb.go:	return m.Unmarshal(b)
+br/pkg/lightning/checkpoints/checkpointspb/file_checkpoints.pb.go:func (m *TableCheckpointModel) XXX_Unmarshal(b []byte) error {
+br/pkg/lightning/checkpoints/checkpointspb/file_checkpoints.pb.go:	return m.Unmarshal(b)
+br/pkg/lightning/checkpoints/checkpointspb/file_checkpoints.pb.go:func (m *EngineCheckpointModel) XXX_Unmarshal(b []byte) error {
+br/pkg/lightning/checkpoints/checkpointspb/file_checkpoints.pb.go:	return m.Unmarshal(b)
+br/pkg/lightning/checkpoints/checkpointspb/file_checkpoints.pb.go:func (m *ChunkCheckpointModel) XXX_Unmarshal(b []byte) error {
+br/pkg/lightning/checkpoints/checkpointspb/file_checkpoints.pb.go:	return m.Unmarshal(b)
+br/pkg/lightning/checkpoints/checkpointspb/file_checkpoints.pb.go:func (m *CheckpointsModel) Unmarshal(dAtA []byte) error {
+br/pkg/lightning/checkpoints/checkpointspb/file_checkpoints.pb.go:					if err := mapvalue.Unmarshal(dAtA[iNdEx:postmsgIndex]); err != nil {
+br/pkg/lightning/checkpoints/checkpointspb/file_checkpoints.pb.go:			if err := m.TaskCheckpoint.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+br/pkg/lightning/checkpoints/checkpointspb/file_checkpoints.pb.go:func (m *TaskCheckpointModel) Unmarshal(dAtA []byte) error {
+br/pkg/lightning/checkpoints/checkpointspb/file_checkpoints.pb.go:func (m *TableCheckpointModel) Unmarshal(dAtA []byte) error {
+br/pkg/lightning/checkpoints/checkpointspb/file_checkpoints.pb.go:					if err := mapvalue.Unmarshal(dAtA[iNdEx:postmsgIndex]); err != nil {
+br/pkg/lightning/checkpoints/checkpointspb/file_checkpoints.pb.go:func (m *EngineCheckpointModel) Unmarshal(dAtA []byte) error {
+br/pkg/lightning/checkpoints/checkpointspb/file_checkpoints.pb.go:					if err := mapvalue.Unmarshal(dAtA[iNdEx:postmsgIndex]); err != nil {
+br/pkg/lightning/checkpoints/checkpointspb/file_checkpoints.pb.go:func (m *ChunkCheckpointModel) Unmarshal(dAtA []byte) error {
+br/pkg/lightning/checkpoints/checkpoints.go:			if err := json.Unmarshal(colPerm, &value.ColumnPermutation); err != nil {
+br/pkg/lightning/checkpoints/checkpoints.go:	err = cpdb.checkpoints.Unmarshal(content)
+br/pkg/lightning/backend/local/engine.go:	if err = json.Unmarshal(jsonBytes, &e.engineMeta); err != nil {
+br/pkg/lightning/backend/local/localhelper_test.go:		_ = r.Unmarshal(b)
+br/pkg/lightning/backend/local/localhelper_test.go:		_ = l.Unmarshal(b)
+br/pkg/lightning/config/bytesize.go:// UnmarshalText implements encoding.TextUnmarshaler
+br/pkg/lightning/config/bytesize.go:func (size *ByteSize) UnmarshalText(b []byte) error {
+br/pkg/lightning/config/bytesize.go:// UnmarshalJSON implements json.Unmarshaler (for testing)
+br/pkg/lightning/config/bytesize.go:func (size *ByteSize) UnmarshalJSON(b []byte) error {
+br/pkg/lightning/config/bytesize.go:	if err := json.Unmarshal(b, &res); err != nil {
+br/pkg/lightning/config/bytesize_test.go:		err := toml.Unmarshal([]byte(tc.input), &output)
+br/pkg/lightning/config/config_test.go:func TestDurationUnmarshal(t *testing.T) {
+br/pkg/lightning/config/config_test.go:	err := duration.UnmarshalText([]byte("13m20s"))
+br/pkg/lightning/config/config_test.go:	err = duration.UnmarshalText([]byte("13x20s"))
+br/pkg/lightning/config/config_test.go:	err := duration.UnmarshalText([]byte("13m20s"))
+br/pkg/lightning/config/config_test.go:		err := cp.UnmarshalTOML(key)
+br/pkg/lightning/config/global.go:		if err = toml.Unmarshal(data, cfg); err != nil {
+br/pkg/lightning/config/config.go:func (t *PostOpLevel) UnmarshalTOML(v interface{}) error {
+br/pkg/lightning/config/config.go:func (t *PostOpLevel) UnmarshalJSON(data []byte) error {
+br/pkg/lightning/config/config.go:func (t *CheckpointKeepStrategy) UnmarshalTOML(v interface{}) error {
+br/pkg/lightning/config/config.go:func (t *CheckpointKeepStrategy) UnmarshalJSON(data []byte) error {
+br/pkg/lightning/config/config.go:func (cfg *MaxError) UnmarshalTOML(v interface{}) error {
+br/pkg/lightning/config/config.go:func (dra *DuplicateResolutionAlgorithm) UnmarshalTOML(v interface{}) error {
+br/pkg/lightning/config/config.go:func (dra *DuplicateResolutionAlgorithm) UnmarshalJSON(data []byte) error {
+br/pkg/lightning/config/config.go:func (d *Duration) UnmarshalText(text []byte) error {
+br/pkg/lightning/tikv/tikv.go:// UnmarshalJSON implements the json.Unmarshaler interface.
+br/pkg/lightning/tikv/tikv.go:func (ss *StoreState) UnmarshalJSON(content []byte) error {
+br/pkg/metautil/metafile.go:		if err = proto.Unmarshal(decryptContent, child); err != nil {
+br/pkg/metautil/metafile.go:			if err := json.Unmarshal(s.Db, dbInfo); err != nil {
+br/pkg/metautil/metafile.go:				if err := json.Unmarshal(s.Table, tableInfo); err != nil {
+br/pkg/metautil/metafile.go:				if err := json.Unmarshal(s.Stats, stats); err != nil {
+executor/analyze_col_v2.go:		err := colResp.Unmarshal(data)
+executor/analyze_idx.go:		err = resp.Unmarshal(data)
+executor/show.go:		err = gjson.Unmarshal(hack.Slice(privData), &privValue)
+executor/show.go:	if err = stateJSON.UnmarshalJSON(stateBytes); err != nil {
+executor/show.go:	if err = tokenJSON.UnmarshalJSON(tokenBytes); err != nil {
+br/tests/br_key_locked/locker.go:	err = json.Unmarshal(body, &data)
+executor/plan_replayer.go:	if err := json.Unmarshal(buf.Bytes(), jsonTbl); err != nil {
+executor/analyze_col.go:			err = resp.Unmarshal(data)
+executor/analyze_col.go:			err = colResp.Unmarshal(data)
+br/cmd/br/debug.go:				err = json.Unmarshal(schema.Db, dbInfo)
+br/cmd/br/debug.go:				err = json.Unmarshal(schema.Table, tblInfo)
+br/cmd/br/debug.go:			backupMetaJSON, err := utils.UnmarshalBackupMeta(metaData)
+executor/resource_tag_test.go:		err := tag.Unmarshal(ctx.ResourceGroupTag)
+executor/checksum.go:		if err = checksum.Unmarshal(data); err != nil {
+executor/load_stats.go:	if err := json.Unmarshal(data, jsonTbl); err != nil {
+sessionctx/stmtctx/stmtctx_test.go:	err = json.Unmarshal(bytes, &newWarns)
+executor/executor_test.go:		require.NoError(t, proto.Unmarshal(req.Data, dagReq))
+sessionctx/sessionstates/session_token.go:	if err = json.Unmarshal(tokenBytes, &token); err != nil {
+sessionctx/stmtctx/stmtctx.go:// UnmarshalJSON implements the Unmarshaler.UnmarshalJSON interface.
+sessionctx/stmtctx/stmtctx.go:func (warn *SQLWarn) UnmarshalJSON(data []byte) error {
+sessionctx/stmtctx/stmtctx.go:	if err := json.Unmarshal(data, &w); err != nil {
+store/mockstore/mockcopr/cop_handler_dag.go:	err := proto.Unmarshal(req.Data, dagReq)
+store/mockstore/mockcopr/analyze.go:	err := proto.Unmarshal(req.Data, analyzeReq)
+sessionctx/binloginfo/binloginfo_test.go:		err := bin.Unmarshal(payload)
+sessionctx/binloginfo/binloginfo_test.go:	err := preVal.Unmarshal(bin.PrewriteValue)
+sessionctx/binloginfo/binloginfo_test.go:		err := bin.Unmarshal(payload)
+sessionctx/binloginfo/binloginfo_test.go:		err := bin.Unmarshal(payload)
+sessionctx/variable/variable_test.go:	json.Unmarshal([]byte(cfg), &v)
+store/mockstore/unistore/cophandler/mpp.go:		err := targetTask.Unmarshal(taskMeta)
+store/mockstore/unistore/cophandler/mpp.go:	err := proto.Unmarshal(req.Data, dagReq)
+store/mockstore/unistore/cophandler/mpp_exec.go:		err := meta.Unmarshal(encodedMeta)
+store/mockstore/unistore/cophandler/mpp_exec.go:		err = selectResp.Unmarshal(mppData.Data)
+store/mockstore/unistore/cophandler/analyze.go:	err := proto.Unmarshal(req.Data, analyzeReq)
+store/mockstore/unistore/cophandler/cop_handler.go:	err := proto.Unmarshal(req.Data, dagReq)
+store/mockstore/unistore/tikv/region.go:	err := ri.meta.Unmarshal(data)
+store/mockstore/unistore/tikv/region.go:		err1 = rm.storeMeta.Unmarshal(val)
+testkit/testdata/testdata.go:	err = json.Unmarshal(re.ReplaceAll(byteValue, nil), &res)
+testkit/testdata/testdata.go:	err := json.Unmarshal(*td.input[casesIdx].Cases, in)
+testkit/testdata/testdata.go:		err = json.Unmarshal(*td.output[casesIdx].Cases, out)
+testkit/testdata/testdata.go:	require.NoError(t, json.Unmarshal(*td.input[casesIdx].Cases, in))
+testkit/testdata/testdata.go:		require.NoError(t, json.Unmarshal(*td.output[casesIdx].Cases, out))
+dumpling/export/sql.go:	err = json.Unmarshal(tidbConfigBytes, &tidbConfig)
+distsql/select_result.go:		err = r.selectResp.Unmarshal(resultSubset.GetData())
+parser/model/model_bench_test.go:func BenchmarkJsonUnmarshal(b *testing.B) {
+parser/model/model_bench_test.go:		require.Nil(b, json.Unmarshal(c, ncol))
+parser/model/model_bench_test.go:func BenchmarkCapnpUnmarshal(b *testing.B) {
+parser/model/model_bench_test.go:		nmsg, err := capnp.Unmarshal(c)
+parser/model/model_bench_test.go:func BenchmarkMsgpackUnmarshal(b *testing.B) {
+parser/model/model_bench_test.go:		require.Nil(b, msgpack.Unmarshal(c, ncol))
+parser/model/model_bench_test.go:func BenchmarkProtoUnmarshal(b *testing.B) {
+parser/model/model_bench_test.go:		require.Nil(b, proto.Unmarshal(c, col))
+parser/model/model_bench_test.go:func BenchmarkKMUnmarshal(b *testing.B) {
+parser/model/model.go:		// because the content before json.Marshal is INCONSISTENT with the content after json.Unmarshal.
+parser/model/model.go:// UnmarshalJSON implements the user defined unmarshal method.
+parser/model/model.go:func (cis *CIStr) UnmarshalJSON(b []byte) error {
+parser/model/model.go:	if err := json.Unmarshal(b, (*T)(cis)); err == nil {
+parser/model/model.go:	// Unmarshal CIStr from a single string.
+parser/model/model.go:	err := json.Unmarshal(b, &cis.O)
+parser/model/model_test.go:func TestUnmarshalCIStr(t *testing.T) {
+parser/model/model_test.go:	require.NoError(t, ci.UnmarshalJSON(buf))
+parser/model/model_test.go:	require.NoError(t, ci.UnmarshalJSON(buf))
+parser/model/model_test.go:		err = json.Unmarshal(bytes, &newCol)
+parser/model/model_test.go:	err = json.Unmarshal(loc1Byte, loc2)
+parser/model/ddl.go:	err := json.Unmarshal(b, job)
+parser/model/ddl.go:	if err := json.Unmarshal(job.RawArgs, &rawArgs); err != nil {
+parser/model/ddl.go:		if err := json.Unmarshal(rawArgs[i], args[i]); err != nil {
+parser/types/field_type.go:// UnmarshalJSON implements the json.Unmarshaler interface.
+parser/types/field_type.go:func (ft *FieldType) UnmarshalJSON(data []byte) error {
+parser/types/field_type.go:	err := json.Unmarshal(data, &r)
+parser/terror/terror_test.go:	err = json.Unmarshal(buf, &curTErr)
+docs/design/2022-10-27-serialization-extended.md:BenchmarkJsonUnmarshal-8    	  285547	      3567 ns/op	     720 B/op	      28 allocs/op
+docs/design/2022-10-27-serialization-extended.md:BenchmarkCapnpUnmarshal-8   	 2905576	       411.2 ns/op	     192 B/op	       3 allocs/op
+docs/design/2022-10-27-serialization-extended.md:BenchmarkProtoUnmarshal-8   	 1000000	      1060 ns/op	     504 B/op	      20 allocs/op
+docs/design/2022-10-27-serialization-extended.md:BenchmarkKMUnmarshal-8      	15301827	        90.12 ns/op	     256 B/op	       1 allocs/op
+tidb-binlog/driver/example/kafkaReader/src/main/java/com/pingcap/kafkareader/proto/GoGoProtos.java:    registry.add(com.pingcap.kafkareader.proto.GoGoProtos.unsafeUnmarshalerAll);
+tidb-binlog/driver/example/kafkaReader/src/main/java/com/pingcap/kafkareader/proto/GoGoProtos.java:    registry.add(com.pingcap.kafkareader.proto.GoGoProtos.unsafeUnmarshaler);
+tidb-binlog/driver/example/kafkaReader/src/main/java/com/pingcap/kafkareader/proto/GoGoProtos.java:      java.lang.Boolean> unsafeUnmarshalerAll = com.google.protobuf.GeneratedMessage
+tidb-binlog/driver/example/kafkaReader/src/main/java/com/pingcap/kafkareader/proto/GoGoProtos.java:      java.lang.Boolean> unsafeUnmarshaler = com.google.protobuf.GeneratedMessage
+tidb-binlog/driver/example/kafkaReader/src/main/java/com/pingcap/kafkareader/proto/GoGoProtos.java:    unsafeUnmarshalerAll.internalInit(descriptor.getExtensions().get(26));
+tidb-binlog/driver/example/kafkaReader/src/main/java/com/pingcap/kafkareader/proto/GoGoProtos.java:    unsafeUnmarshaler.internalInit(descriptor.getExtensions().get(55));
+tidb-binlog/driver/reader/reader.go:			err := binlog.Unmarshal(kmsg.Value)
+tidb-binlog/driver/reader/offset.go:	err = binlog.Unmarshal(msg.Value)
+tidb-binlog/node/registry.go:	if err = json.Unmarshal(data, &status); err != nil {
+tidb-binlog/node/registry.go:	if err := json.Unmarshal(node.Value, &status); err != nil {
+tidb-binlog/pump_client/client.go:				err := json.Unmarshal(ev.Kv.Value, &status)
+meta/meta.go:	err = json.Unmarshal(timeRangeByte, &timeRange)
+meta/meta.go:		err = json.Unmarshal(r.Value, tbInfo)
+meta/meta.go:		err = json.Unmarshal(r.Value, dbInfo)
+meta/meta.go:	err = json.Unmarshal(value, dbInfo)
+meta/meta.go:		err = json.Unmarshal(value, policy)
+meta/meta.go:	err = json.Unmarshal(value, policy)
+meta/meta.go:	err = json.Unmarshal(value, tableInfo)
+meta/meta.go:	err = json.Unmarshal(data, diff)
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:func (x *MutationType) UnmarshalJSON(data []byte) error {
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:	value, err := proto.UnmarshalJSONEnum(MutationType_value, data, "MutationType")
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:func (x *BinlogType) UnmarshalJSON(data []byte) error {
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:	value, err := proto.UnmarshalJSONEnum(BinlogType_value, data, "BinlogType")
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:func (m *Column) XXX_Unmarshal(b []byte) error {
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:	return m.Unmarshal(b)
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:func (m *ColumnInfo) XXX_Unmarshal(b []byte) error {
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:	return m.Unmarshal(b)
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:func (m *Row) XXX_Unmarshal(b []byte) error {
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:	return m.Unmarshal(b)
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:func (m *Table) XXX_Unmarshal(b []byte) error {
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:	return m.Unmarshal(b)
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:func (m *Key) XXX_Unmarshal(b []byte) error {
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:	return m.Unmarshal(b)
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:func (m *TableMutation) XXX_Unmarshal(b []byte) error {
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:	return m.Unmarshal(b)
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:func (m *DMLData) XXX_Unmarshal(b []byte) error {
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:	return m.Unmarshal(b)
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:func (m *DDLData) XXX_Unmarshal(b []byte) error {
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:	return m.Unmarshal(b)
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:func (m *Binlog) XXX_Unmarshal(b []byte) error {
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:	return m.Unmarshal(b)
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:func (m *Column) Unmarshal(dAtA []byte) error {
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:func (m *ColumnInfo) Unmarshal(dAtA []byte) error {
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:func (m *Row) Unmarshal(dAtA []byte) error {
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:			if err := m.Columns[len(m.Columns)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:func (m *Table) Unmarshal(dAtA []byte) error {
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:			if err := m.ColumnInfo[len(m.ColumnInfo)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:			if err := m.Mutations[len(m.Mutations)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:			if err := m.UniqueKeys[len(m.UniqueKeys)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:func (m *Key) Unmarshal(dAtA []byte) error {
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:func (m *TableMutation) Unmarshal(dAtA []byte) error {
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:			if err := m.Row.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:			if err := m.ChangeRow.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:func (m *DMLData) Unmarshal(dAtA []byte) error {
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:			if err := m.Tables[len(m.Tables)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:func (m *DDLData) Unmarshal(dAtA []byte) error {
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:func (m *Binlog) Unmarshal(dAtA []byte) error {
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:			if err := m.DmlData.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:			if err := m.DdlData.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+ddl/placement/constraints.go:	err := yaml.UnmarshalStrict(c, &constraints)
+ddl/placement/rule.go:	err2 := yaml.UnmarshalStrict(cnstbytes, &constraints2)
+ddl/label/rule.go:	err := yaml.UnmarshalStrict(attrBytes, &attributes)
+ddl/db_test.go:func TestJsonUnmarshalErrWhenPanicInCancellingPath(t *testing.T) {
+ddl/ddl.go:		err := json.Unmarshal(job.RawArgs, &job.Args)
+ddl/ddl.go:		err := json.Unmarshal(job.RawArgs, &job.Args)
+ddl/ddl_tiflash_api.go:	err = json.Unmarshal(buf.Bytes(), &j)
+planner/core/plan_cost_ver2_test.go:				require.Nil(t, json.Unmarshal([]byte(costData), &factorCosts))
+planner/core/cbo_test.go:	err = json.Unmarshal(bytes, statsTbl)
+planner/core/binary_plan_test.go:	// AccessObject field is an interface and json.Unmarshall can't handle it, so we don't check it against the json output.
+planner/core/binary_plan_test.go:		err = binary.Unmarshal(b)
+planner/core/binary_plan_test.go:	err = binary.Unmarshal(b)
+planner/core/binary_plan_test.go:	err = binary.Unmarshal(b)
+planner/core/binary_plan_test.go:	err = binary.Unmarshal(b)
+planner/core/binary_plan_test.go:	err = binary.Unmarshal(b)
+planner/core/binary_plan_test.go:	err = binary.Unmarshal(b)
+planner/core/binary_plan_test.go:	err = binary.Unmarshal(b)
+config/config_util.go:	if err := json.Unmarshal(content, &clonedConf); err != nil {
+config/config_test.go:func TestAtomicBoolUnmarshal(t *testing.T) {
+config/config_test.go:func TestNullableBoolUnmarshal(t *testing.T) {
+config/config_test.go:	err = json.Unmarshal(data, &nb)
+config/config_test.go:	err = json.Unmarshal(data, &nb)
+config/config_test.go:	err = json.Unmarshal(data, &nb)
+config/config_test.go:	// Test for UnmarshalText
+config/config_test.go:	// Test for UnmarshalJSON
+config/config_test.go:	err = json.Unmarshal([]byte("{\"enable-timestamp\":false}"), &log)
+config/config_test.go:	err = json.Unmarshal([]byte("{\"disable-timestamp\":null}"), &log)
+config/config_util_test.go:	require.NoError(t, json.Unmarshal([]byte(jsonConf), &nested))
+config/config_util_test.go:	require.NoError(t, toml.Unmarshal([]byte(tomlConf), &nested))
+config/config.go:func (b *nullableBool) UnmarshalText(text []byte) error {
+config/config.go:func (b *nullableBool) UnmarshalJSON(data []byte) error {
+config/config.go:	if err = json.Unmarshal(data, &v); err != nil {
+config/config.go:// UnmarshalText implements the encoding.TextUnmarshaler interface.
+config/config.go:func (b *AtomicBool) UnmarshalText(text []byte) error {
+config/config.go:	return l.UnmarshalText([]byte(c.Log.Level))
+config/config.go:	err = json.Unmarshal(j, &jsonValue)
+privilege/privileges/cache.go:				err := json.Unmarshal(hack.Slice(privData), &privValue)
+privilege/privileges/privileges_test.go:			err := url.UnmarshalBinary([]byte("spiffe://mesh.pingcap.com/ns/timesh/sa/me1"))
+util/logutil/log.go:	if err := l.UnmarshalText([]byte(level)); err != nil {
+util/plancodec/binary_plan_decode.go:	err = pb.Unmarshal(protoBytes)
+util/resourcegrouptag/resource_group_tag.go:	err = tag.Unmarshal(data)
+util/resourcegrouptag/resource_group_tag_test.go:	err = tag.Unmarshal(buf)
+util/resourcegrouptag/resource_group_tag_test.go:	err = tag.Unmarshal(buf)
+util/chunk/column_test.go:		err := j.UnmarshalJSON([]byte(fmt.Sprintf(`{"%v":%v}`, i, i)))
+bindinfo/session_handle.go:	if err := json.Unmarshal(hack.Slice(sessionStates.Bindings), &records); err != nil {
+types/datum_test.go:		err = gjson.Unmarshal(bytes, &datum)
+types/time_test.go:	require.NoError(t, json.Unmarshal(j, &v2))
+types/mydecimal_test.go:		require.NoError(t, json.Unmarshal(j, &v2))
+types/mydecimal.go:// So we still need a MarshalJSON/UnmarshalJSON function.
+types/mydecimal.go:// UnmarshalJSON implements Unmarshaler.UnmarshalJSON interface.
+types/mydecimal.go:func (d *MyDecimal) UnmarshalJSON(data []byte) error {
+types/mydecimal.go:	err := json.Unmarshal(data, &r)
+types/json_binary.go:	if err = bj.UnmarshalJSON(data); err != nil && !ErrJSONObjectKeyTooLong.Equal(err) {
+types/json_binary.go:// UnmarshalJSON implements the json.Unmarshaler interface.
+types/json_binary.go:func (bj *BinaryJSON) UnmarshalJSON(data []byte) error {
+types/datum.go:// UnmarshalJSON implements Unmarshaler.UnmarshalJSON interface.
+types/datum.go:func (d *Datum) UnmarshalJSON(data []byte) error {
+types/datum.go:	if err := gjson.Unmarshal(data, &jd); err != nil {
+types/time.go:// UnmarshalJSON implements Unmarshaler.UnmarshalJSON interface.
+types/time.go:func (t *Time) UnmarshalJSON(data []byte) error {
+types/time.go:	return json.Unmarshal(data, &t.coreTime)
+types/json_binary_test.go:func TestBinaryJSONMarshalUnmarshal(t *testing.T) {
+cmd/importer/stats.go:	err = json.Unmarshal(data, jsTable)
+statistics/fmsketch.go:	err := p.Unmarshal(data)
+statistics/cmsketch.go:	err := p.Unmarshal(data)
+statistics/handle/dump.go:	err = json.Unmarshal(jsonStr, &jsonTbl)
+statistics/handle/dump_test.go:	err = json.Unmarshal(jsonBytes, loadJSONTable)
+statistics/handle/dump_test.go:	err = json.Unmarshal(jsonBytes, loadJSONTable)
+statistics/handle/handle.go:			err := json.Unmarshal([]byte(colIDs), &item.ColIDs)
+statistics/handle/handle.go:		err := json.Unmarshal([]byte(colIDs), &item.ColIDs)
+statistics/handle/handle.go:		err := json.Unmarshal([]byte(data), &twoIDs)
+statistics/handle/gc.go:		err = json.Unmarshal([]byte(strColIDs), &colIDs)
+statistics/trace_test.go:		err = json.Unmarshal([]byte(resultStr), &resultJSON)
+statistics/trace_test.go:	err := json.Unmarshal([]byte(resultStr), &resultJSON)

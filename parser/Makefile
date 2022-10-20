@@ -1,4 +1,4 @@
-.PHONY: all parser clean
+.PHONY: all parser clean capnp-genrated capnp
 
 all: fmt parser
 
@@ -6,6 +6,24 @@ test: fmt parser
 	sh test.sh
 
 parser: parser.go hintparser.go
+
+karmem-generated: karmem
+	karmem build --golang -o model/km model/km/*.km
+
+capnp-generated: capnp
+	capnp compile -I$(GOPATH)/src/capnproto.org/go/capnp/std -ogo model/capnp/*.capnp
+
+proto-generated: protobuf
+	protoc -I=model/proto --go_out=model model/proto/*.proto
+
+capnp:
+	go install capnproto.org/go/capnp/v3/capnpc-go@latest
+
+protobuf:
+	go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
+
+karmem:
+	 go install karmem.org/cmd/karmem@latest
 
 %arser.go: prefix = $(@:parser.go=)
 %arser.go: %arser.y bin/goyacc

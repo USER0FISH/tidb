@@ -1,0 +1,21 @@
+syntax = "proto3";
+package proto;
+option go_package = "./proto";
+
+message CIStr {
+  string O = 1;
+  string L = 2;
+};
+
+message ColumnInfo {
+  int64 ID = 1;
+  CIStr Name = 2;
+	int64 Offset = 3;
+	string OriginDefaultValue = 4;
+	bytes OriginDefaultValueBit = 5;
+	bool DefaultIsExpr = 6;
+	string GeneratedExprString = 7;
+	map<string, bool> Dependences = 8;
+};
+
+

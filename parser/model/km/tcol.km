@@ -1,0 +1,25 @@
+karmem app @packed(true) @golang.package(`km`);
+
+struct CIStr inline {
+	O []char;
+	L []char;
+}
+
+struct KV inline {
+	K []char;
+	V bool;
+}
+
+struct ColumnInfo table {
+	ID       int64;
+	Name     CIStr;
+	Offset int64;
+	OriginDefaultValueType byte;
+	OriginDefaultValue []char;
+	OriginDefaultValueBit []byte;
+	DefaultValueType byte;
+	DefaultValue []char;
+	DefaultIsExpr bool;
+	GeneratedExprString []char;
+	Dependences []KV;
+}

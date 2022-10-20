@@ -1,0 +1,602 @@
+store/gcworker/gc_worker.go:		args, err1 := json.Marshal([]interface{}{kv.Key{}, []int64{int64(v.(int))}})
+store/gcworker/gc_worker.go:		args, err1 := json.Marshal([]interface{}{kv.Key{}, []int64{}, []string{v.(string)}})
+store/mockstore/mockcopr/cop_handler_dag.go:		raw, err := res.Marshal()
+store/mockstore/mockcopr/cop_handler_dag.go:	data, err := proto.Marshal(selResp)
+store/mockstore/mockcopr/analyze.go:	data, err := proto.Marshal(&tipb.AnalyzeIndexResp{Hist: hg, Cms: cm})
+store/mockstore/mockcopr/analyze.go:	data, err := proto.Marshal(colResp)
+store/mockstore/mockcopr/checksum.go:	data, err := resp.Marshal()
+store/helper/helper.go:	m, _ := json.Marshal(rule)
+store/helper/helper.go:	v, err := json.Marshal(input)
+store/helper/helper_test.go:	data, err := json.Marshal(stat)
+store/helper/helper_test.go:	data, err := json.MarshalIndent(resp, "", "	")
+store/helper/helper_test.go:	data, err := json.MarshalIndent(resp, "", "	")
+store/helper/helper_test.go:	data, err := json.MarshalIndent(storesStat, "", "	")
+store/copr/coprocessor.go:	data, err := proto.Marshal(&selResp)
+store/mockstore/unistore/cophandler/cop_handler.go:	data, mErr := proto.Marshal(selResp)
+store/mockstore/unistore/cophandler/cop_handler.go:	data, err := resp.Marshal()
+store/mockstore/unistore/cophandler/cop_handler_test.go:		ts.locks.Put(m.Key, lock.MarshalBinary())
+store/mockstore/unistore/tikv/write.go:	wb.lockBatch.set(key, lock.MarshalBinary())
+store/mockstore/unistore/tikv/write.go:	wb.lockBatch.set(key, lock.MarshalBinary())
+store/mockstore/unistore/tikv/region.go:	_, err := ri.meta.MarshalTo(data[8:])
+store/mockstore/unistore/tikv/region.go:	storeBuf, err := rm.storeMeta.Marshal()
+store/mockstore/unistore/tikv/mvcc/mvcc.go:// MarshalBinary implements encoding.BinaryMarshaler interface.
+store/mockstore/unistore/tikv/mvcc/mvcc.go:func (l *Lock) MarshalBinary() []byte {
+store/mockstore/unistore/tikv/server.go:		raw, err := res.Marshal()
+store/mockstore/unistore/tikv/mock_region.go:	storeBuf, err := rm.storeMeta.Marshal()
+store/mockstore/unistore/cophandler/analyze.go:	data, err := proto.Marshal(&tipb.AnalyzeIndexResp{Hist: hg, Cms: cm, Collector: &tipb.SampleCollector{FmSketch: statistics.FMSketchToProto(processor.fms)}})
+store/mockstore/unistore/cophandler/analyze.go:	data, err := proto.Marshal(&tipb.AnalyzeIndexResp{Hist: hg, Cms: cm})
+store/mockstore/unistore/cophandler/analyze.go:	data, err := proto.Marshal(colResp)
+store/mockstore/unistore/cophandler/analyze.go:	data, err := colResp.Marshal()
+store/mockstore/unistore/cophandler/analyze.go:	data, err := proto.Marshal(resp)
+store/pdtypes/typeutil.go:// MarshalJSON returns the size as a JSON string.
+store/pdtypes/typeutil.go:func (b ByteSize) MarshalJSON() ([]byte, error) {
+store/pdtypes/typeutil.go:// MarshalJSON returns the duration as a JSON string.
+store/pdtypes/typeutil.go:func (d *Duration) MarshalJSON() ([]byte, error) {
+store/pdtypes/typeutil.go:// MarshalText returns the duration as a JSON string.
+store/pdtypes/typeutil.go:func (d Duration) MarshalText() ([]byte, error) {
+store/pdtypes/typeutil.go:// MarshalJSON returns the size as a JSON string.
+store/pdtypes/typeutil.go:func (s StringSlice) MarshalJSON() ([]byte, error) {
+session/txninfo/summary.go:		res, err := json.Marshal(sqls)
+session/txninfo/txn_info.go:		res, err := json.Marshal(allSQLDigests)
+session/session.go:			prewriteData, err := prewriteValue.Marshal()
+session/session.go:	b, err := json.MarshalIndent(data, "", "  ")
+telemetry/status.go:	j, err := json.MarshalIndent(s, "", "  ")
+telemetry/telemetry.go:	prettyJSON, err := json.MarshalIndent(data, "", "  ")
+telemetry/telemetry.go:	rawJSON, err := json.Marshal(data)
+executor/memtable_reader.go:						tmp, err := json.Marshal(val)
+executor/memtable_reader.go:			jsonBody, err := json.Marshal(req)
+sessionctx/variable/sysvar_test.go:	info, err := json.Marshal(vars.LastQueryInfo)
+executor/grant.go:	priv, err = json.Marshal(&gp)
+expression/util_test.go:func (m *MockExpr) MarshalJSON() ([]byte, error)            { return nil, nil }
+executor/mpp_gather.go:		pbData, err := dagReq.Marshal()
+expression/expr_to_pb.go:		encoded, err = proto.Marshal(metadata)
+executor/hot_regions_history_table_test.go:	jsonResp, err := json.Marshal(resp)
+executor/hot_regions_history_table_test.go:	jsonResp, err := json.Marshal(resp)
+expression/builtin_json.go:	buf, err := obj.MarshalJSON()
+expression/builtin_miscellaneous_vec.go:		bin, err := u.MarshalBinary()
+expression/bench_test.go:	bin, _ := u.MarshalBinary()
+expression/constant.go:// MarshalJSON implements json.Marshaler interface.
+expression/constant.go:func (c *Constant) MarshalJSON() ([]byte, error) {
+expression/expression_test.go:	res, err := NewZero().MarshalJSON()
+expression/scalar_function.go:// MarshalJSON implements json.Marshaler interface.
+expression/scalar_function.go:func (sf *ScalarFunction) MarshalJSON() ([]byte, error) {
+expression/expression.go:	goJSON.Marshaler
+expression/expression.go:		_, err = proto.Marshal(metadata)
+expression/builtin_info.go:	resultStr, err := json.Marshal(result)
+expression/builtin_info.go:		b.ctx.GetSessionVars().StmtCtx.AppendWarning(errUnknown.GenWithStack("Marshalling result as JSON failed with error: %v", err))
+expression/builtin_json_vec.go:		jb, err := buf.GetJSON(i).MarshalJSON()
+expression/column.go:// MarshalJSON implements json.Marshaler interface.
+expression/column.go:func (col *Column) MarshalJSON() ([]byte, error) {
+expression/expr_to_pb_test.go:			js, err := json.Marshal(pbExpr)
+expression/expr_to_pb_test.go:		js, err := json.Marshal(pbExpr)
+expression/expr_to_pb_test.go:		js, err := json.Marshal(pbExpr)
+expression/expr_to_pb_test.go:		js, err := json.Marshal(pbExpr)
+expression/expr_to_pb_test.go:		js, err := json.Marshal(pbExpr)
+expression/expr_to_pb_test.go:	js, err := json.Marshal(pbExprs[0])
+expression/expr_to_pb_test.go:		js, err := json.Marshal(pbExpr)
+expression/expr_to_pb_test.go:		js, err := json.Marshal(pbExpr)
+expression/expr_to_pb_test.go:		js, err := json.Marshal(pbExpr)
+expression/expr_to_pb_test.go:		js, err := json.Marshal(pbExpr)
+expression/expr_to_pb_test.go:	js, err := json.Marshal(pbByItem)
+expression/expr_to_pb_test.go:	js, err = json.Marshal(pbByItem)
+expression/expr_to_pb_test.go:	js, err := json.Marshal(pbByItem)
+expression/expr_to_pb_test.go:	js, err = json.Marshal(pbByItem)
+expression/expr_to_pb_test.go:	js, err = json.Marshal(pbByItem)
+expression/expr_to_pb_test.go:		js, err := json.Marshal(pbExpr)
+expression/expr_to_pb_test.go:	js, err := json.Marshal(pbByItem)
+expression/builtin_miscellaneous.go:	bin, err := u.MarshalBinary()
+expression/column_test.go:	marshal, err := col.MarshalJSON()
+executor/coprocessor.go:	data, err := proto.Marshal(&selResp)
+executor/coprocessor.go:	data, err := chunk.Marshal()
+executor/coprocessor.go:	resp.Data, err = proto.Marshal(&streamResponse)
+executor/show_placement_labels_test.go:		d, err := gjson.Marshal(obj)
+executor/infoschema_reader.go:		data, err := json.Marshal(storeStat.Store.Labels)
+executor/infoschema_reader.go:						decodedKeyBytes, err := json.Marshal(decodedKey)
+executor/infoschema_reader.go:						decodedKeyBytes, err := json.Marshal(decodedKey)
+executor/infoschema_reader.go:							decodedKeyJSON, err := json.Marshal(decodedKey)
+executor/show_placement.go:	data, err := bj.MarshalJSON()
+executor/show_placement.go:		d, err := gjson.Marshal(values)
+executor/analyzetest/analyze_test.go:	jsOrigin, _ := json.Marshal(dumpJSONTable)
+executor/analyzetest/analyze_test.go:	jsCur, err := json.Marshal(jsonTbl)
+expression/scalar_function_test.go:	res, err := sf.MarshalJSON()
+expression/aggregation/agg_to_pb_test.go:			js, err := json.Marshal(pbExpr)
+sessionctx/variable/sysvar.go:		info, err := json.Marshal(s.LastQueryInfo)
+sessionctx/variable/sysvar.go:		info, err := json.Marshal(s.LastDDLInfo)
+executor/trace.go:	data, err := json.Marshal(traces)
+executor/plan_replayer.go:		data, err := json.Marshal(jsonTbl)
+executor/show.go:	stateBytes, err := gjson.Marshal(sessionStates)
+executor/show.go:	tokenBytes, err := gjson.Marshal(token)
+sessionctx/stmtctx/stmtctx_test.go:func TestMarshalSQLWarn(t *testing.T) {
+sessionctx/stmtctx/stmtctx_test.go:	bytes, err := json.Marshal(warns)
+sessionctx/sessionstates/session_token.go:	tokenBytes, err := json.Marshal(token)
+sessionctx/sessionstates/session_token.go:	if tokenBytes, err = json.Marshal(token); err != nil {
+sessionctx/sessionstates/session_token_test.go:	tokenBytes2, err := json.Marshal(token)
+sessionctx/sessionstates/session_token_test.go:	tokenBytes2, err = json.Marshal(token)
+sessionctx/sessionstates/session_token_test.go:	tokenBytes, err := json.Marshal(token)
+sessionctx/stmtctx/stmtctx.go:// MarshalJSON implements the Marshaler.MarshalJSON interface.
+sessionctx/stmtctx/stmtctx.go:func (warn *SQLWarn) MarshalJSON() ([]byte, error) {
+sessionctx/stmtctx/stmtctx.go:	return json.Marshal(w)
+domain/infosync/placement_manager.go:	b, err := json.Marshal(bundles)
+domain/infosync/tiflash_manager.go:		body, err := json.Marshal(&groupConfig)
+domain/infosync/tiflash_manager.go:	j, _ := json.Marshal(rule)
+domain/infosync/tiflash_manager.go:	j, err := json.Marshal(input)
+domain/infosync/label_manager.go:	r, err := json.Marshal(rule)
+domain/infosync/label_manager.go:	r, err := json.Marshal(patch)
+domain/infosync/label_manager.go:	ids, err := json.Marshal(ruleIDs)
+domain/infosync/label_manager.go:	r, err := json.Marshal(rule)
+domain/infosync/label_manager.go:		r, err := json.Marshal(p)
+domain/infosync/schedule_manager.go:	configJSON, err := json.Marshal(config)
+domain/infosync/info_test.go:		gotJSON, err := json.Marshal(got)
+domain/infosync/info_test.go:		expectJSON, err := json.Marshal(bundle)
+domain/infosync/info.go:// Marshal `ServerInfo` into bytes.
+domain/infosync/info.go:func (info *ServerInfo) Marshal() ([]byte, error) {
+domain/infosync/info.go:	infoBuf, err := json.Marshal(info)
+domain/infosync/info.go:	infoBuf, err := is.info.Marshal()
+domain/infosync/info.go:	infoBuf, err := json.Marshal(topologyInfo)
+br/pkg/utils/json_test.go:		metaJSON, err := MarshalBackupMeta(meta)
+br/pkg/utils/json.go:// MarshalBackupMeta converts the backupmeta strcture to JSON.
+br/pkg/utils/json.go:// Unlike json.Marshal, this function also format some []byte fields for human reading.
+br/pkg/utils/json.go:func MarshalBackupMeta(meta *backuppb.BackupMeta) ([]byte, error) {
+br/pkg/utils/json.go:	return json.Marshal(result)
+br/pkg/utils/json.go:// (made by MarshalBackupMeta) back to the go structure.
+br/pkg/utils/json.go:	schema.Db, err = json.Marshal(jSchema.DB)
+br/pkg/utils/json.go:		schema.Table, err = json.Marshal(jSchema.Table)
+br/pkg/utils/json.go:	meta.Ddls, err = json.Marshal(jMeta.DDLs)
+br/pkg/utils/safe_point.go:// MarshalLogObject implements zapcore.ObjectMarshaler.
+br/pkg/utils/safe_point.go:func (sp BRServiceSafePoint) MarshalLogObject(encoder zapcore.ObjectEncoder) error {
+br/pkg/utils/schema_test.go:	dbBytes, err := json.Marshal(mockDB)
+br/pkg/utils/schema_test.go:	tblBytes, err := json.Marshal(mockTbl)
+br/pkg/utils/schema_test.go:	statsBytes, err := json.Marshal(mockStats)
+br/pkg/utils/schema_test.go:	data, err := proto.Marshal(meta)
+br/pkg/utils/schema_test.go:	dbBytes, err := json.Marshal(mockDB)
+br/pkg/utils/schema_test.go:	tblBytes, err := json.Marshal(mockTbl)
+br/pkg/utils/schema_test.go:	statsBytes, err := json.Marshal(mockStats)
+br/pkg/utils/schema_test.go:	data, err := proto.Marshal(meta)
+br/pkg/utils/schema_test.go:		dbBytes, err := json.Marshal(mockDB)
+br/pkg/utils/schema_test.go:		tblBytes, err := json.Marshal(mockTbl)
+br/pkg/utils/schema_test.go:		data, err := proto.Marshal(meta)
+br/pkg/utils/schema_test.go:		data, err := proto.Marshal(meta)
+br/pkg/utils/schema_test.go:		data, err := proto.Marshal(meta)
+br/pkg/lightning/lightning.go:	json, err := json.Marshal(task)
+br/pkg/lightning/lightning.go:	res, err := web.MarshalTaskProgress()
+br/pkg/lightning/lightning.go:	res, err := web.MarshalTableCheckpoints(tableName)
+br/pkg/lightning/verification/checksum_test.go:	res, err := json.Marshal(testStruct)
+br/pkg/lightning/mydump/parser.go:// MarshalLogArray implements the zapcore.ArrayMarshaler interface
+br/pkg/lightning/mydump/parser.go:func (row Row) MarshalLogArray(encoder zapcore.ArrayEncoder) error {
+br/pkg/lightning/restore/table_restore_test.go:	mustMarshal := func(v interface{}) []byte {
+br/pkg/lightning/restore/table_restore_test.go:		data, err := json.Marshal(v)
+br/pkg/lightning/restore/table_restore_test.go:				_, err = w.Write(mustMarshal(ca.stores))
+br/pkg/lightning/restore/table_restore_test.go:				_, err = w.Write(mustMarshal(ca.emptyRegions))
+br/pkg/lightning/restore/meta_manager.go:		jsonByts, err := json.Marshal(&pausedCfg)
+br/pkg/lightning/restore/checksum_test.go:	data, _ := c.checksum.Marshal()
+br/pkg/lightning/verification/checksum.go:// MarshalLogObject implements the zapcore.ObjectMarshaler interface.
+br/pkg/lightning/verification/checksum.go:func (c *KVChecksum) MarshalLogObject(encoder zapcore.ObjectEncoder) error {
+br/pkg/lightning/verification/checksum.go:// MarshalJSON implements the json.Marshaler interface.
+br/pkg/lightning/verification/checksum.go:func (c KVChecksum) MarshalJSON() ([]byte, error) {
+br/pkg/lightning/checkpoints/checkpoints_test.go:func TestCheckpointMarshallUnmarshall(t *testing.T) {
+br/pkg/lightning/web/progress.go:		return json.Marshal(cp)
+br/pkg/lightning/web/progress.go:func MarshalTaskProgress() ([]byte, error) {
+br/pkg/lightning/web/progress.go:	return json.Marshal(&currentProgress)
+br/pkg/lightning/web/progress.go:func MarshalTableCheckpoints(tableName string) ([]byte, error) {
+br/pkg/lightning/config/config_test.go:func TestDurationMarshalJSON(t *testing.T) {
+br/pkg/lightning/config/config_test.go:	result, err := duration.MarshalJSON()
+br/pkg/lightning/config/config_test.go:		res, err := strategy.MarshalText()
+br/pkg/lightning/config/config.go:	bytes, err := json.Marshal(cfg)
+br/pkg/lightning/config/config.go:func (t PostOpLevel) MarshalText() ([]byte, error) {
+br/pkg/lightning/config/config.go:func (t *PostOpLevel) MarshalJSON() ([]byte, error) {
+br/pkg/lightning/config/config.go:func (t CheckpointKeepStrategy) MarshalText() ([]byte, error) {
+br/pkg/lightning/config/config.go:func (t *CheckpointKeepStrategy) MarshalJSON() ([]byte, error) {
+br/pkg/lightning/config/config.go:func (dra DuplicateResolutionAlgorithm) MarshalText() ([]byte, error) {
+br/pkg/lightning/config/config.go:func (dra *DuplicateResolutionAlgorithm) MarshalJSON() ([]byte, error) {
+br/pkg/lightning/config/config.go:func (d Duration) MarshalText() ([]byte, error) {
+br/pkg/lightning/config/config.go:func (d *Duration) MarshalJSON() ([]byte, error) {
+br/pkg/lightning/backend/tidb/tidb.go:// MarshalLogArray implements the zapcore.ArrayMarshaler interface
+br/pkg/lightning/backend/tidb/tidb.go:func (rows tidbRows) MarshalLogArray(encoder zapcore.ArrayEncoder) error {
+br/pkg/lightning/backend/tidb/tidb.go:		value, err := datum.GetMysqlJSON().MarshalJSON()
+br/pkg/lightning/backend/tidb/tidb.go:			zap.Array("data", kv.RowArrayMarshaler(row)))
+br/pkg/lightning/backend/tidb/tidb.go:			zap.Array("data", kv.RowArrayMarshaler(row)))
+br/pkg/lightning/backend/tidb/tidb.go:				zap.Array("original", kv.RowArrayMarshaler(row)),
+br/pkg/lightning/checkpoints/glue_checkpoint.go:				columnPerm, err := json.Marshal(value.ColumnPermutation)
+br/pkg/lightning/checkpoints/glue_checkpoint.go:					columnPerm, err := json.Marshal(diff.columnPermutation)
+br/pkg/lightning/checkpoints/checkpoints.go:				columnPerm, err := json.Marshal(value.ColumnPermutation)
+br/pkg/lightning/checkpoints/checkpoints.go:					columnPerm, err := json.Marshal(diff.columnPermutation)
+br/pkg/lightning/checkpoints/checkpoints.go:	serialized, err := cpdb.checkpoints.Marshal()
+br/pkg/lightning/config/bytesize_test.go:	js, err := json.Marshal(input)
+br/pkg/lightning/backend/kv/sql2kv.go:// RowArrayMarshaler wraps a slice of types.Datum for logging the content into zap.
+br/pkg/lightning/backend/kv/sql2kv.go:type RowArrayMarshaler []types.Datum
+br/pkg/lightning/backend/kv/sql2kv.go:// MarshalLogArray implements the zapcore.ArrayMarshaler interface
+br/pkg/lightning/backend/kv/sql2kv.go:func (row RowArrayMarshaler) MarshalLogArray(encoder zapcore.ArrayEncoder) error {
+br/pkg/lightning/backend/kv/sql2kv.go:		if err := encoder.AppendObject(zapcore.ObjectMarshalerFunc(func(enc zapcore.ObjectEncoder) error {
+br/pkg/lightning/backend/kv/sql2kv.go:		zap.Array("original", RowArrayMarshaler(row)),
+br/pkg/lightning/backend/kv/sql2kv.go:		zap.Array("original", RowArrayMarshaler(row)),
+br/pkg/lightning/backend/kv/sql2kv.go:			zap.Array("originalRow", RowArrayMarshaler(row)),
+br/pkg/lightning/backend/kv/sql2kv.go:			zap.Array("convertedRow", RowArrayMarshaler(record)),
+br/pkg/lightning/checkpoints/checkpointspb/file_checkpoints.pb.go:var _ = proto.Marshal
+br/pkg/lightning/checkpoints/checkpointspb/file_checkpoints.pb.go:func (m *CheckpointsModel) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+br/pkg/lightning/checkpoints/checkpointspb/file_checkpoints.pb.go:		return xxx_messageInfo_CheckpointsModel.Marshal(b, m, deterministic)
+br/pkg/lightning/checkpoints/checkpointspb/file_checkpoints.pb.go:		n, err := m.MarshalToSizedBuffer(b)
+br/pkg/lightning/checkpoints/checkpointspb/file_checkpoints.pb.go:func (m *TaskCheckpointModel) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+br/pkg/lightning/checkpoints/checkpointspb/file_checkpoints.pb.go:		return xxx_messageInfo_TaskCheckpointModel.Marshal(b, m, deterministic)
+br/pkg/lightning/checkpoints/checkpointspb/file_checkpoints.pb.go:		n, err := m.MarshalToSizedBuffer(b)
+br/pkg/lightning/checkpoints/checkpointspb/file_checkpoints.pb.go:func (m *TableCheckpointModel) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+br/pkg/lightning/checkpoints/checkpointspb/file_checkpoints.pb.go:		return xxx_messageInfo_TableCheckpointModel.Marshal(b, m, deterministic)
+br/pkg/lightning/checkpoints/checkpointspb/file_checkpoints.pb.go:		n, err := m.MarshalToSizedBuffer(b)
+br/pkg/lightning/checkpoints/checkpointspb/file_checkpoints.pb.go:func (m *EngineCheckpointModel) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+br/pkg/lightning/checkpoints/checkpointspb/file_checkpoints.pb.go:		return xxx_messageInfo_EngineCheckpointModel.Marshal(b, m, deterministic)
+br/pkg/lightning/checkpoints/checkpointspb/file_checkpoints.pb.go:		n, err := m.MarshalToSizedBuffer(b)
+br/pkg/lightning/checkpoints/checkpointspb/file_checkpoints.pb.go:func (m *ChunkCheckpointModel) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+br/pkg/lightning/checkpoints/checkpointspb/file_checkpoints.pb.go:		return xxx_messageInfo_ChunkCheckpointModel.Marshal(b, m, deterministic)
+br/pkg/lightning/checkpoints/checkpointspb/file_checkpoints.pb.go:		n, err := m.MarshalToSizedBuffer(b)
+br/pkg/lightning/checkpoints/checkpointspb/file_checkpoints.pb.go:func (m *CheckpointsModel) Marshal() (dAtA []byte, err error) {
+br/pkg/lightning/checkpoints/checkpointspb/file_checkpoints.pb.go:	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+br/pkg/lightning/checkpoints/checkpointspb/file_checkpoints.pb.go:func (m *CheckpointsModel) MarshalTo(dAtA []byte) (int, error) {
+br/pkg/lightning/checkpoints/checkpointspb/file_checkpoints.pb.go:	return m.MarshalToSizedBuffer(dAtA[:size])
+br/pkg/lightning/checkpoints/checkpointspb/file_checkpoints.pb.go:func (m *CheckpointsModel) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+br/pkg/lightning/checkpoints/checkpointspb/file_checkpoints.pb.go:			size, err := m.TaskCheckpoint.MarshalToSizedBuffer(dAtA[:i])
+br/pkg/lightning/checkpoints/checkpointspb/file_checkpoints.pb.go:					size, err := v.MarshalToSizedBuffer(dAtA[:i])
+br/pkg/lightning/checkpoints/checkpointspb/file_checkpoints.pb.go:func (m *TaskCheckpointModel) Marshal() (dAtA []byte, err error) {
+br/pkg/lightning/checkpoints/checkpointspb/file_checkpoints.pb.go:	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+br/pkg/lightning/checkpoints/checkpointspb/file_checkpoints.pb.go:func (m *TaskCheckpointModel) MarshalTo(dAtA []byte) (int, error) {
+br/pkg/lightning/checkpoints/checkpointspb/file_checkpoints.pb.go:	return m.MarshalToSizedBuffer(dAtA[:size])
+br/pkg/lightning/checkpoints/checkpointspb/file_checkpoints.pb.go:func (m *TaskCheckpointModel) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+br/pkg/lightning/checkpoints/checkpointspb/file_checkpoints.pb.go:func (m *TableCheckpointModel) Marshal() (dAtA []byte, err error) {
+br/pkg/lightning/checkpoints/checkpointspb/file_checkpoints.pb.go:	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+br/pkg/lightning/checkpoints/checkpointspb/file_checkpoints.pb.go:func (m *TableCheckpointModel) MarshalTo(dAtA []byte) (int, error) {
+br/pkg/lightning/checkpoints/checkpointspb/file_checkpoints.pb.go:	return m.MarshalToSizedBuffer(dAtA[:size])
+br/pkg/lightning/checkpoints/checkpointspb/file_checkpoints.pb.go:func (m *TableCheckpointModel) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+br/pkg/lightning/checkpoints/checkpointspb/file_checkpoints.pb.go:					size, err := v.MarshalToSizedBuffer(dAtA[:i])
+br/pkg/lightning/checkpoints/checkpointspb/file_checkpoints.pb.go:func (m *EngineCheckpointModel) Marshal() (dAtA []byte, err error) {
+br/pkg/lightning/checkpoints/checkpointspb/file_checkpoints.pb.go:	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+br/pkg/lightning/checkpoints/checkpointspb/file_checkpoints.pb.go:func (m *EngineCheckpointModel) MarshalTo(dAtA []byte) (int, error) {
+br/pkg/lightning/checkpoints/checkpointspb/file_checkpoints.pb.go:	return m.MarshalToSizedBuffer(dAtA[:size])
+br/pkg/lightning/checkpoints/checkpointspb/file_checkpoints.pb.go:func (m *EngineCheckpointModel) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+br/pkg/lightning/checkpoints/checkpointspb/file_checkpoints.pb.go:					size, err := v.MarshalToSizedBuffer(dAtA[:i])
+br/pkg/lightning/checkpoints/checkpointspb/file_checkpoints.pb.go:func (m *ChunkCheckpointModel) Marshal() (dAtA []byte, err error) {
+br/pkg/lightning/checkpoints/checkpointspb/file_checkpoints.pb.go:	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+br/pkg/lightning/checkpoints/checkpointspb/file_checkpoints.pb.go:func (m *ChunkCheckpointModel) MarshalTo(dAtA []byte) (int, error) {
+br/pkg/lightning/checkpoints/checkpointspb/file_checkpoints.pb.go:	return m.MarshalToSizedBuffer(dAtA[:size])
+br/pkg/lightning/checkpoints/checkpointspb/file_checkpoints.pb.go:func (m *ChunkCheckpointModel) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+br/pkg/lightning/backend/local/engine.go:	jsonBytes, err := json.Marshal(meta)
+br/pkg/lightning/backend/kv/sql2kv_test.go:func TestMarshal(t *testing.T) {
+br/pkg/lightning/backend/kv/sql2kv_test.go:	err := encoder.AddArray("test", lkv.RowArrayMarshaler{types.NewStringDatum("1"), nullDatum, minNotNull, types.MaxValueDatum()})
+br/pkg/lightning/backend/kv/sql2kv_test.go:	err = encoder.AddArray("bad-test", lkv.RowArrayMarshaler{minNotNull, invalid})
+br/pkg/lightning/backend/local/localhelper_test.go:		b, _ := region.Region.Marshal()
+br/pkg/lightning/backend/local/localhelper_test.go:		b, _ := region.Region.Marshal()
+br/pkg/pdutil/pd.go:	body, err := json.Marshal(pauseSchedulerBody{Delay: int64(pauseTimeout.Seconds())})
+br/pkg/pdutil/pd.go:	body, err := json.Marshal(pauseSchedulerBody{Delay: 0})
+br/pkg/pdutil/pd.go:		reqData, err := json.Marshal(newCfg)
+br/pkg/pdutil/pd.go:	reqData, _ := json.Marshal(&struct {
+br/pkg/pdutil/pd.go:	reqData, _ := json.Marshal(&struct {
+br/pkg/pdutil/pd.go:	reqData, err := json.Marshal(&rule)
+br/pkg/backup/client.go:			p, err := json.Marshal(policyInfo)
+br/pkg/backup/client.go:			jobBytes, err := json.Marshal(job)
+br/pkg/backup/schema.go:	dbBytes, err := json.Marshal(s.dbInfo)
+br/pkg/backup/schema.go:		tableBytes, err = json.Marshal(s.tableInfo)
+br/pkg/backup/schema.go:		statsBytes, err = json.Marshal(s.stats)
+br/pkg/restore/stream_metas_test.go:		bs, err := meta.Marshal()
+br/pkg/restore/stream_metas_test.go:		bs, err := meta.Marshal()
+br/pkg/restore/stream_metas_test.go:		raw, err := m.Marshal()
+br/pkg/restore/stream_metas_test.go:		raw, err := m.Marshal()
+br/pkg/restore/log_client_test.go:		data, err := meta.Marshal()
+br/pkg/restore/client.go:		// ddls is the bytes of json.Marshal
+br/pkg/restore/stream_metas.go:	bs, err := ms.Helper.Marshal(data)
+br/pkg/pdutil/pd_serial_test.go:		ret, err := json.Marshal(stats)
+br/pkg/pdutil/pd_serial_test.go:		ret, err := json.Marshal(storeInfo)
+br/pkg/restore/split/client.go:	m, _ := json.Marshal(rule)
+br/pkg/logutil/logging.go:// AbbreviatedArrayMarshaler abbreviates an array of elements.
+br/pkg/logutil/logging.go:type AbbreviatedArrayMarshaler []string
+br/pkg/logutil/logging.go:// MarshalLogArray implements zapcore.ArrayMarshaler.
+br/pkg/logutil/logging.go:func (abb AbbreviatedArrayMarshaler) MarshalLogArray(encoder zapcore.ArrayEncoder) error {
+br/pkg/logutil/logging.go:	return zap.Array(key, AbbreviatedArrayMarshaler(marshalFunc(elements)))
+br/pkg/logutil/logging.go:type zapFileMarshaler struct{ *backuppb.File }
+br/pkg/logutil/logging.go:func (file zapFileMarshaler) MarshalLogObject(enc zapcore.ObjectEncoder) error {
+br/pkg/logutil/logging.go:type zapFilesMarshaler []*backuppb.File
+br/pkg/logutil/logging.go:func (fs zapFilesMarshaler) MarshalLogObject(encoder zapcore.ObjectEncoder) error {
+br/pkg/logutil/logging.go:	_ = encoder.AddArray("files", AbbreviatedArrayMarshaler(elements))
+br/pkg/logutil/logging.go:	return zap.Object("file", zapFileMarshaler{file})
+br/pkg/logutil/logging.go:	return zap.Object("files", zapFilesMarshaler(fs))
+br/pkg/logutil/logging.go:func (t zapStreamBackupTaskInfo) MarshalLogObject(enc zapcore.ObjectEncoder) error {
+br/pkg/logutil/logging.go:type zapRewriteRuleMarshaler struct{ *import_sstpb.RewriteRule }
+br/pkg/logutil/logging.go:func (rewriteRule zapRewriteRuleMarshaler) MarshalLogObject(enc zapcore.ObjectEncoder) error {
+br/pkg/logutil/logging.go:	return zap.Object("rewriteRule", zapRewriteRuleMarshaler{rewriteRule})
+br/pkg/logutil/logging.go:func RewriteRuleObject(rewriteRule *import_sstpb.RewriteRule) zapcore.ObjectMarshaler {
+br/pkg/logutil/logging.go:	return zapRewriteRuleMarshaler{rewriteRule}
+br/pkg/logutil/logging.go:type zapMarshalRegionMarshaler struct{ *metapb.Region }
+br/pkg/logutil/logging.go:func (region zapMarshalRegionMarshaler) MarshalLogObject(enc zapcore.ObjectEncoder) error {
+br/pkg/logutil/logging.go:	return zap.Object("region", zapMarshalRegionMarshaler{region})
+br/pkg/logutil/logging.go:	return zap.Object(key, zapMarshalRegionMarshaler{region})
+br/pkg/logutil/logging.go:type zapSSTMetaMarshaler struct{ *import_sstpb.SSTMeta }
+br/pkg/logutil/logging.go:func (sstMeta zapSSTMetaMarshaler) MarshalLogObject(enc zapcore.ObjectEncoder) error {
+br/pkg/logutil/logging.go:	return zap.Object("sstMeta", zapSSTMetaMarshaler{sstMeta})
+br/pkg/logutil/logging.go:type zapSSTMetasMarshaler []*import_sstpb.SSTMeta
+br/pkg/logutil/logging.go:func (m zapSSTMetasMarshaler) MarshalLogArray(encoder zapcore.ArrayEncoder) error {
+br/pkg/logutil/logging.go:		if err := encoder.AppendObject(zapSSTMetaMarshaler{meta}); err != nil {
+br/pkg/logutil/logging.go:	return zap.Array("sstMetas", zapSSTMetasMarshaler(sstMetas))
+br/pkg/logutil/logging.go:type zapKeysMarshaler [][]byte
+br/pkg/logutil/logging.go:func (keys zapKeysMarshaler) MarshalLogObject(encoder zapcore.ObjectEncoder) error {
+br/pkg/logutil/logging.go:	_ = encoder.AddArray("keys", AbbreviatedArrayMarshaler(elements))
+br/pkg/logutil/logging.go:	return zap.Object("keys", zapKeysMarshaler(keys))
+br/pkg/task/restore_test.go:			tblBytes, err := json.Marshal(mockTbl)
+br/pkg/task/restore_test.go:			statsBytes, err := json.Marshal(mockStats)
+br/pkg/task/restore_test.go:		dbBytes, err := json.Marshal(mockDB)
+br/pkg/task/restore_test.go:	data, err := proto.Marshal(meta)
+br/pkg/streamhelper/tsheap.go:func (rst *RangesSharesTS) Zap() zapcore.ObjectMarshaler {
+br/pkg/streamhelper/tsheap.go:	return zapcore.ObjectMarshalerFunc(func(oe zapcore.ObjectEncoder) error {
+br/pkg/streamhelper/tsheap.go:		return oe.AddArray("items", zapcore.ArrayMarshalerFunc(func(ae zapcore.ArrayEncoder) error {
+br/pkg/streamhelper/tsheap.go:			return ae.AppendObject(zapcore.ObjectMarshalerFunc(func(oe1 zapcore.ObjectEncoder) error {
+br/pkg/streamhelper/integration_test.go:	taskData, err := task.PBInfo.Marshal()
+br/pkg/rtree/logging.go:	return zap.Object("ranges", rangesMarshaler(ranges))
+br/pkg/rtree/logging.go:type rangesMarshaler []Range
+br/pkg/rtree/logging.go:func (rs rangesMarshaler) MarshalLogArray(encoder zapcore.ArrayEncoder) error {
+br/pkg/rtree/logging.go:func (rs rangesMarshaler) MarshalLogObject(encoder zapcore.ObjectEncoder) error {
+br/pkg/rtree/logging.go:	_ = encoder.AddArray("ranges", logutil.AbbreviatedArrayMarshaler(elements))
+br/pkg/streamhelper/client.go:	data, err := task.PBInfo.Marshal()
+br/pkg/task/backup_ebs.go:	data, err := json.Marshal(backupInfo)
+br/pkg/task/stream.go:			zap.Array("rewrite-rules", zapcore.ArrayMarshalerFunc(func(ae zapcore.ArrayEncoder) error {
+br/pkg/task/restore_ebs_meta.go:	data, err := json.Marshal(h.metaInfo)
+br/pkg/task/stream_test.go:		buff, err := meta.Marshal()
+br/pkg/stream/stream_status.go:	mustMarshal := func(i interface{}) string {
+br/pkg/stream/stream_status.go:		r, err := json.Marshal(i)
+br/pkg/stream/stream_status.go:	p.console.Println(mustMarshal(tasks))
+br/pkg/stream/rewrite_meta_rawkv_test.go:	return json.Marshal(&dbInfo)
+br/pkg/stream/rewrite_meta_rawkv_test.go:	return json.Marshal(&tableInfo)
+br/pkg/stream/rewrite_meta_rawkv_test.go:	value, err := json.Marshal(&tbl)
+br/pkg/stream/rewrite_meta_rawkv_test.go:	value, err := json.Marshal(&t1Copy)
+br/pkg/stream/rewrite_meta_rawkv_test.go:	value, err = json.Marshal(&t2Copy)
+br/pkg/stream/stream_mgr.go:// For truncate command. Marshal metadata to reupload to external storage.
+br/pkg/stream/stream_mgr.go:func (*MetadataHelper) Marshal(meta *backuppb.Metadata) ([]byte, error) {
+br/pkg/stream/stream_mgr.go:	return meta.Marshal()
+br/pkg/stream/rewrite_meta_rawkv.go:	newValue, err := json.Marshal(newDBInfo)
+br/pkg/stream/rewrite_meta_rawkv.go:	newValue, err := json.Marshal(&newTableInfo)
+br/pkg/config/ebs.go:	cfg, err := json.Marshal(c)
+br/pkg/metautil/metafile_test.go:	b, err := m.Marshal()
+br/pkg/metautil/metafile_test.go:	mockStorage.EXPECT().ReadFile(ctx, "leaf").Return(leaf.Marshal())
+br/pkg/metautil/metafile_test.go:	mockStorage.EXPECT().ReadFile(ctx, "leaf31S1").Return(leaf31S1.Marshal())
+br/pkg/metautil/metafile_test.go:	mockStorage.EXPECT().ReadFile(ctx, "leaf31S2").Return(leaf31S2.Marshal())
+br/pkg/metautil/metafile_test.go:	mockStorage.EXPECT().ReadFile(ctx, "leaf32S1").Return(leaf32S1.Marshal())
+br/pkg/metautil/metafile_test.go:	mockStorage.EXPECT().ReadFile(ctx, "node21").Return(node21.Marshal())
+br/pkg/metautil/metafile_test.go:	mockStorage.EXPECT().ReadFile(ctx, "node22").Return(node22.Marshal())
+br/pkg/metautil/metafile_test.go:	mockStorage.EXPECT().ReadFile(ctx, "leaf23S1").Return(leaf23S1.Marshal())
+br/pkg/metautil/metafile.go:		// old version: Ddls, _ := json.Marshal(make([]*model.Job, 0))
+br/pkg/metautil/metafile.go:	backupMetaData, err := proto.Marshal(writer.backupMeta)
+br/pkg/metautil/metafile.go:	content, err := writer.metafiles.root.Marshal()
+br/cmd/br/debug.go:				backupMetaJSON, err := utils.MarshalBackupMeta(backupMeta)
+br/cmd/br/debug.go:			backupMeta, err := proto.Marshal(backupMetaJSON)
+br/cmd/br/debug.go:			kvsBytes, err := json.MarshalIndent(kvs, "", "  ")
+infoschema/infoschema_test.go:		expectedJSON, err := json.Marshal(expected)
+infoschema/infoschema_test.go:		actualJSON, err := json.Marshal(actual)
+distsql/distsql_test.go:	respBytes, err := respPB.Marshal()
+distsql/request_builder.go:		builder.Request.Data, builder.err = dag.Marshal()
+distsql/request_builder.go:		builder.Request.Data, builder.err = ana.Marshal()
+distsql/request_builder.go:		builder.Request.Data, builder.err = checksum.Marshal()
+parser/types/field_type.go:// MarshalJSON marshals the FieldType to JSON.
+parser/types/field_type.go:func (ft *FieldType) MarshalJSON() ([]byte, error) {
+parser/types/field_type.go:	return json.Marshal(r)
+parser/model/model.go:		// because the content before json.Marshal is INCONSISTENT with the content after json.Unmarshal.
+parser/model/model_bench_test.go:	c, err := json.Marshal(col)
+parser/model/model_bench_test.go:	c, err := msg.Marshal()
+parser/model/model_bench_test.go:	c, err := msgpack.Marshal(col)
+parser/model/model_bench_test.go:	c, err := proto.Marshal(col)
+parser/model/model_test.go:	job1.RawArgs, err = json.Marshal(job1.Args)
+parser/model/model_test.go:	job3.RawArgs, err = json.Marshal(job3.Args)
+parser/model/model_test.go:	job4.RawArgs, err = json.Marshal(job4.Args)
+parser/model/model_test.go:	job5.RawArgs, err = json.Marshal(job5.Args)
+parser/model/model_test.go:	job6.RawArgs, err = json.Marshal(job6.Args)
+parser/model/model_test.go:	job7.RawArgs, err = json.Marshal(job7.Args)
+parser/model/model_test.go:	job8.RawArgs, err = json.Marshal(job8.Args)
+parser/model/model_test.go:	job9.RawArgs, err = json.Marshal(job9.Args)
+parser/model/model_test.go:	job10.RawArgs, err = json.Marshal(job10.Args)
+parser/model/model_test.go:	job11.RawArgs, err = json.Marshal(job11.Args)
+parser/model/model_test.go:	job12.RawArgs, err = json.Marshal(job12.Args)
+parser/model/model_test.go:	job13.RawArgs, err = json.Marshal(job13.Args)
+parser/model/model_test.go:	job14.RawArgs, err = json.Marshal(job14.Args)
+parser/model/model_test.go:	job15.RawArgs, err = json.Marshal(job15.Args)
+parser/model/model_test.go:	buf, err := json.Marshal(str)
+parser/model/model_test.go:	buf, err = json.Marshal(ci)
+parser/model/model_test.go:		bytes, err := json.Marshal(col)
+parser/model/model_test.go:	loc1Byte, err := json.Marshal(loc1)
+parser/model/ddl.go:		job.RawArgs, err = json.Marshal(job.Args)
+parser/model/ddl.go:				sub.RawArgs, err = json.Marshal(sub.Args)
+parser/model/ddl.go:	b, err = json.Marshal(job)
+parser/model/capnp/a.capnp.go:	str, _ := text.Marshal(0xb470ed2e0461e004, capnp.Struct(s))
+parser/model/capnp/a.capnp.go:	str, _ := text.Marshal(0x9833def99a797b60, capnp.Struct(s))
+parser/terror/terror_test.go:	buf, err := json.Marshal(prevTErr)
+meta/meta.go:	data, err := json.Marshal(policy)
+meta/meta.go:	data, err := json.Marshal(policy)
+meta/meta.go:	data, err := json.Marshal(dbInfo)
+meta/meta.go:	data, err := json.Marshal(dbInfo)
+meta/meta.go:	data, err := json.Marshal(tableInfo)
+meta/meta.go:	timeRangeByte, err := json.Marshal(timeRange)
+meta/meta.go:	data, err := json.Marshal(tableInfo)
+meta/meta.go:	data, err := json.Marshal(diff)
+dumpling/export/sql_test.go:		tidbConfBytes, err := json.Marshal(tidbConf)
+dumpling/export/consistency_test.go:	tidbConfBytes, err := json.Marshal(tidbConf)
+dumpling/export/consistency_test.go:	tidbConfBytes, err = json.Marshal(tidbConf)
+server/tidb_test.go:	err = pem.Encode(keyOut, &pem.Block{Type: "RSA PRIVATE KEY", Bytes: x509.MarshalPKCS1PrivateKey(privateKey)})
+dumpling/export/config.go:	cfg, err := json.Marshal(conf)
+tidb-binlog/driver/reader/offset_test.go:	data, err = binlog.Marshal()
+tidb-binlog/pump_client/client.go:	commitData, err := binlog.Marshal()
+server/http_status.go:		js, err := json.MarshalIndent(config.GetGlobalConfig(), "", " ")
+server/http_status.go:	js, err := json.Marshal(st)
+tidb-binlog/node/registry.go:	objstr, err := json.Marshal(status)
+tidb-binlog/node/registry.go:	objstr, err := json.Marshal(status)
+server/http_handler_test.go:	configBytes, err = json.Marshal(config.GetGlobalConfig())
+server/http_handler_test.go:	settingBytes, err = json.Marshal(settings)
+server/http_handler.go:	js, err := json.MarshalIndent(data, "", " ")
+server/http_handler.go:		js, err := json.MarshalIndent(tb.Meta(), "", " ")
+server/http_handler.go:	v, err := json.Marshal(input)
+tidb-binlog/driver/example/kafkaReader/src/main/java/com/pingcap/kafkareader/proto/GoGoProtos.java:    registry.add(com.pingcap.kafkareader.proto.GoGoProtos.stableMarshalerAll);
+tidb-binlog/driver/example/kafkaReader/src/main/java/com/pingcap/kafkareader/proto/GoGoProtos.java:    registry.add(com.pingcap.kafkareader.proto.GoGoProtos.unsafeMarshalerAll);
+tidb-binlog/driver/example/kafkaReader/src/main/java/com/pingcap/kafkareader/proto/GoGoProtos.java:    registry.add(com.pingcap.kafkareader.proto.GoGoProtos.stableMarshaler);
+tidb-binlog/driver/example/kafkaReader/src/main/java/com/pingcap/kafkareader/proto/GoGoProtos.java:    registry.add(com.pingcap.kafkareader.proto.GoGoProtos.unsafeMarshaler);
+tidb-binlog/driver/example/kafkaReader/src/main/java/com/pingcap/kafkareader/proto/GoGoProtos.java:      java.lang.Boolean> stableMarshalerAll = com.google.protobuf.GeneratedMessage
+tidb-binlog/driver/example/kafkaReader/src/main/java/com/pingcap/kafkareader/proto/GoGoProtos.java:      java.lang.Boolean> unsafeMarshalerAll = com.google.protobuf.GeneratedMessage
+tidb-binlog/driver/example/kafkaReader/src/main/java/com/pingcap/kafkareader/proto/GoGoProtos.java:      java.lang.Boolean> stableMarshaler = com.google.protobuf.GeneratedMessage
+tidb-binlog/driver/example/kafkaReader/src/main/java/com/pingcap/kafkareader/proto/GoGoProtos.java:      java.lang.Boolean> unsafeMarshaler = com.google.protobuf.GeneratedMessage
+tidb-binlog/driver/example/kafkaReader/src/main/java/com/pingcap/kafkareader/proto/GoGoProtos.java:    stableMarshalerAll.internalInit(descriptor.getExtensions().get(21));
+tidb-binlog/driver/example/kafkaReader/src/main/java/com/pingcap/kafkareader/proto/GoGoProtos.java:    unsafeMarshalerAll.internalInit(descriptor.getExtensions().get(25));
+tidb-binlog/driver/example/kafkaReader/src/main/java/com/pingcap/kafkareader/proto/GoGoProtos.java:    stableMarshaler.internalInit(descriptor.getExtensions().get(52));
+tidb-binlog/driver/example/kafkaReader/src/main/java/com/pingcap/kafkareader/proto/GoGoProtos.java:    unsafeMarshaler.internalInit(descriptor.getExtensions().get(54));
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:var _ = proto.Marshal
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:func (m *Column) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:		return xxx_messageInfo_Column.Marshal(b, m, deterministic)
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:		n, err := m.MarshalTo(b)
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:func (m *ColumnInfo) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:		return xxx_messageInfo_ColumnInfo.Marshal(b, m, deterministic)
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:		n, err := m.MarshalTo(b)
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:func (m *Row) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:		return xxx_messageInfo_Row.Marshal(b, m, deterministic)
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:		n, err := m.MarshalTo(b)
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:func (m *Table) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:		return xxx_messageInfo_Table.Marshal(b, m, deterministic)
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:		n, err := m.MarshalTo(b)
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:func (m *Key) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:		return xxx_messageInfo_Key.Marshal(b, m, deterministic)
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:		n, err := m.MarshalTo(b)
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:func (m *TableMutation) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:		return xxx_messageInfo_TableMutation.Marshal(b, m, deterministic)
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:		n, err := m.MarshalTo(b)
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:func (m *DMLData) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:		return xxx_messageInfo_DMLData.Marshal(b, m, deterministic)
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:		n, err := m.MarshalTo(b)
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:func (m *DDLData) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:		return xxx_messageInfo_DDLData.Marshal(b, m, deterministic)
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:		n, err := m.MarshalTo(b)
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:func (m *Binlog) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:		return xxx_messageInfo_Binlog.Marshal(b, m, deterministic)
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:		n, err := m.MarshalTo(b)
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:func (m *Column) Marshal() (dAtA []byte, err error) {
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:	n, err := m.MarshalTo(dAtA)
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:func (m *Column) MarshalTo(dAtA []byte) (int, error) {
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:func (m *ColumnInfo) Marshal() (dAtA []byte, err error) {
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:	n, err := m.MarshalTo(dAtA)
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:func (m *ColumnInfo) MarshalTo(dAtA []byte) (int, error) {
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:func (m *Row) Marshal() (dAtA []byte, err error) {
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:	n, err := m.MarshalTo(dAtA)
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:func (m *Row) MarshalTo(dAtA []byte) (int, error) {
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:			n, err := msg.MarshalTo(dAtA[i:])
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:func (m *Table) Marshal() (dAtA []byte, err error) {
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:	n, err := m.MarshalTo(dAtA)
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:func (m *Table) MarshalTo(dAtA []byte) (int, error) {
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:			n, err := msg.MarshalTo(dAtA[i:])
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:			n, err := msg.MarshalTo(dAtA[i:])
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:			n, err := msg.MarshalTo(dAtA[i:])
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:func (m *Key) Marshal() (dAtA []byte, err error) {
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:	n, err := m.MarshalTo(dAtA)
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:func (m *Key) MarshalTo(dAtA []byte) (int, error) {
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:func (m *TableMutation) Marshal() (dAtA []byte, err error) {
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:	n, err := m.MarshalTo(dAtA)
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:func (m *TableMutation) MarshalTo(dAtA []byte) (int, error) {
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:		n1, err := m.Row.MarshalTo(dAtA[i:])
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:		n2, err := m.ChangeRow.MarshalTo(dAtA[i:])
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:func (m *DMLData) Marshal() (dAtA []byte, err error) {
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:	n, err := m.MarshalTo(dAtA)
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:func (m *DMLData) MarshalTo(dAtA []byte) (int, error) {
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:			n, err := msg.MarshalTo(dAtA[i:])
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:func (m *DDLData) Marshal() (dAtA []byte, err error) {
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:	n, err := m.MarshalTo(dAtA)
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:func (m *DDLData) MarshalTo(dAtA []byte) (int, error) {
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:func (m *Binlog) Marshal() (dAtA []byte, err error) {
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:	n, err := m.MarshalTo(dAtA)
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:func (m *Binlog) MarshalTo(dAtA []byte) (int, error) {
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:		n3, err := m.DmlData.MarshalTo(dAtA[i:])
+tidb-binlog/proto/go-binlog/secondary_binlog.pb.go:		n4, err := m.DdlData.MarshalTo(dAtA[i:])
+config/config_util.go:	content, err := json.Marshal(conf)
+config/config_test.go:	data, err := json.Marshal(nb)
+config/config_test.go:	data, err = json.Marshal(nb)
+config/config_test.go:	data, err = json.Marshal(nb)
+config/config_util_test.go:		str, err := json.Marshal(v)
+config/config.go:func (b nullableBool) MarshalJSON() ([]byte, error) {
+config/config.go:		return json.Marshal(true)
+config/config.go:		return json.Marshal(false)
+config/config.go:		return json.Marshal(nil)
+config/config.go:func (b nullableBool) MarshalText() ([]byte, error) {
+config/config.go:// MarshalText implements the encoding.TextMarshaler interface.
+config/config.go:func (b AtomicBool) MarshalText() ([]byte, error) {
+config/config.go:	j, err := json.Marshal(GetGlobalConfig())
+config/config.go:	buf, err := json.Marshal(jsonValue)
+ddl/placement/bundle.go:	t, err := json.Marshal(b)
+ddl/placement/bundle.go:	failpoint.Inject("MockMarshalFailure", func(val failpoint.Value) {
+ddl/placement/bundle_test.go:	require.NoError(t, failpoint.Enable("github.com/pingcap/tidb/ddl/placement/MockMarshalFailure", `return(true)`))
+ddl/placement/bundle_test.go:		require.NoError(t, failpoint.Disable("github.com/pingcap/tidb/ddl/placement/MockMarshalFailure"))
+util/topsql/stmtstats/stmtstats_test.go:	b, _ := json.Marshal(i)
+util/dbutil/common.go:	cfg, err := json.Marshal(c)
+util/deadlockhistory/deadlock_history_test.go:	tag1Data, _ := tag1.Marshal()
+util/deadlockhistory/deadlock_history_test.go:	tag2Data, _ := tag2.Marshal()
+util/logutil/slow_query_logger.go:func (*slowLogEncoder) AddArray(string, zapcore.ArrayMarshaler) error   { return nil }
+util/logutil/slow_query_logger.go:func (*slowLogEncoder) AddObject(string, zapcore.ObjectMarshaler) error { return nil }
+util/logutil/log.go:	cfgJSON, err := json.Marshal(&cfg.Config)
+util/logutil/consistency/reporter.go:	rj, err := json.Marshal(resp)
+util/plancodec/codec.go:		proto, err := binary.Marshal()
+util/printer/printer.go:	configJSON, err := json.Marshal(config.GetGlobalConfig())
+ddl/placement/meta_bundle_test.go:	expectedJSON, err := json.Marshal(expected)
+ddl/placement/meta_bundle_test.go:	gotJSON, err := json.Marshal(got)
+util/resourcegrouptag/resource_group_tag.go:	b, err := tag.Marshal()
+util/resourcegrouptag/resource_group_tag_test.go:	buf, err := resourceTag.Marshal()
+util/resourcegrouptag/resource_group_tag_test.go:	buf, err = resourceTag.Marshal()
+util/misc.go:	privBytes, err := x509.MarshalPKCS8PrivateKey(privKey)
+util/security_test.go:		Bytes: x509.MarshalPKCS1PrivateKey(caPrivKey),
+util/security_test.go:			Bytes: x509.MarshalPKCS1PrivateKey(certPrivKey),
+ddl/label/rule.go:	t, err := json.Marshal(r)
+ddl/placement_policy_test.go:		expectedJSON, err := json.Marshal(bundle)
+ddl/placement_policy_test.go:		gotJSON, err := json.Marshal(got)
+ddl/placement_policy_test.go:			expectedJSON, err := json.Marshal(check.bundle)
+ddl/placement_policy_test.go:			pdGotJSON, err := json.Marshal(pdGot)
+ddl/placement_policy_test.go:			isGotJSON, err := json.Marshal(isGot)
+planner/core/common_plans.go:				data, err := json.Marshal(trace.factorCosts)
+planner/core/common_plans.go:	proto, err := binary.Marshal()
+planner/core/plan_to_pb.go:		encodedStr, err := task.ToPB().Marshal()
+planner/core/plan_to_pb.go:		encodedStr, err := task.ToPB().Marshal()
+planner/core/expression_rewriter.go:		retStr, err := json.Marshal(ret)
+planner/core/expression_rewriter.go:		retStr, err := json.Marshal(ret)
+planner/core/expression_rewriter.go:	retStr, err := json.Marshal(ret)
+planner/core/expression_rewriter.go:		retStr, err := json.Marshal(ret)
+planner/core/expression_rewriter.go:	retStr, err := json.Marshal(ret)
+planner/core/expression_rewriter.go:	retStr, err := json.Marshal(ret)
+bindinfo/session_handle.go:	bytes, err := json.Marshal(bindRecords)
+types/json_binary_test.go:func TestBinaryJSONMarshalUnmarshal(t *testing.T) {
+types/json_binary_test.go:func BenchmarkBinaryMarshal(b *testing.B) {
+types/json_binary_test.go:		_, _ = bj.MarshalJSON()
+statistics/fmsketch.go:	protoData, err := p.Marshal()
+types/json_binary.go:	out, err := bj.MarshalJSON()
+types/json_binary.go:// MarshalJSON implements the json.Marshaler interface.
+types/json_binary.go:func (bj BinaryJSON) MarshalJSON() ([]byte, error) {
+types/json_binary.go:		return jsonMarshalOpaqueTo(buf, bj.GetOpaque()), nil
+types/json_binary.go:		return jsonMarshalStringTo(buf, bj.GetString()), nil
+types/json_binary.go:		return jsonMarshalLiteralTo(buf, bj.Value[0]), nil
+types/json_binary.go:		return jsonMarshalTimeTo(buf, bj.GetTime()), nil
+types/json_binary.go:		return jsonMarshalDurationTo(buf, bj.GetDuration()), nil
+types/json_binary.go:		buf = jsonMarshalStringTo(buf, bj.objectGetKey(i))
+types/json_binary.go:func jsonMarshalStringTo(buf, s []byte) []byte {
+types/json_binary.go:func jsonMarshalOpaqueTo(buf []byte, opaque Opaque) []byte {
+types/json_binary.go:func jsonMarshalLiteralTo(b []byte, litType byte) []byte {
+types/json_binary.go:func jsonMarshalTimeTo(buf []byte, time Time) []byte {
+types/json_binary.go:func jsonMarshalDurationTo(buf []byte, duration Duration) []byte {
+types/mydecimal_test.go:func TestMarshalMyDecimal(t *testing.T) {
+types/mydecimal_test.go:		j, err := json.Marshal(&v1)
+types/datum_test.go:func TestMarshalDatum(t *testing.T) {
+types/datum_test.go:	// Marshal the datum and then unmarshal it to see if they are equal.
+types/datum_test.go:		bytes, err := gjson.Marshal(&tt)
+types/time_test.go:func TestMarshalTime(t *testing.T) {
+types/time_test.go:	j, err := json.Marshal(v1)
+types/json_binary_functions.go:			if c == utf8.RuneError && size == 1 { // refer to codes of `binary.jsonMarshalStringTo`
+types/mydecimal.go:// So we still need a MarshalJSON/UnmarshalJSON function.
+types/mydecimal.go:// MarshalJSON implements Marshaler.MarshalJSON interface.
+types/mydecimal.go:func (d *MyDecimal) MarshalJSON() ([]byte, error) {
+types/mydecimal.go:	return json.Marshal(r)
+types/time.go:// MarshalJSON implements Marshaler.MarshalJSON interface.
+types/time.go:func (t Time) MarshalJSON() ([]byte, error) {
+types/time.go:	return json.Marshal(t.coreTime)
+statistics/cmsketch.go:	protoData, err := p.Marshal()
+statistics/handle/dump.go:	data, err := json.Marshal(jsTable)
+types/datum.go:// MarshalJSON implements Marshaler.MarshalJSON interface.
+types/datum.go:func (d *Datum) MarshalJSON() ([]byte, error) {
+types/datum.go:	return gjson.Marshal(jd)
+statistics/handle/dump_test.go:	jsonBytes, err := json.MarshalIndent(dumpJSONTable, "", " ")
+statistics/handle/dump_test.go:	jsonBytes, err := json.MarshalIndent(dumpJSONTable, "", " ")
+statistics/handle/dump_test.go:	jsOrigin, _ := json.Marshal(dumpJSONTable)
+statistics/handle/dump_test.go:	jsonStr, err := json.Marshal(jsConverted)
+statistics/handle/handle.go:		bytes, err = json.Marshal(item.ColIDs)
+statistics/handle/handle.go:	bytes, err := json.Marshal(colIDs)
+statistics/handle/handle.go:		bytes, err := json.Marshal(item.ColIDs)
+tools/check/ut.go:	doc, err := xml.MarshalIndent(suites, "", "\t")

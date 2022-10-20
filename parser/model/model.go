@@ -15,14 +15,12 @@ package model
 
 import (
 	"bytes"
-	"encoding/json"
 	"fmt"
 	"strconv"
 	"strings"
 	"time"
 	"unsafe"
 
-	"github.com/pingcap/errors"
 	"github.com/pingcap/tidb/parser/auth"
 	"github.com/pingcap/tidb/parser/charset"
 	"github.com/pingcap/tidb/parser/mysql"
@@ -1639,52 +1637,6 @@ func (db *DBInfo) Copy() *DBInfo {
 // LessDBInfo is used for sorting DBInfo by DBInfo.Name.
 func LessDBInfo(a *DBInfo, b *DBInfo) bool {
 	return a.Name.L < b.Name.L
-}
-
-// CIStr is case insensitive string.
-type CIStr struct {
-	O string `json:"O"` // Original string.
-	L string `json:"L"` // Lower case string.
-}
-
-// String implements fmt.Stringer interface.
-func (cis CIStr) String() string {
-	return cis.O
-}
-
-// NewCIStr creates a new CIStr.
-func NewCIStr(s string) (cs CIStr) {
-	cs.O = s
-	cs.L = strings.ToLower(s)
-	return
-}
-
-// UnmarshalJSON implements the user defined unmarshal method.
-// CIStr can be unmarshaled from a single string, so PartitionDefinition.Name
-// in this change https://github.com/pingcap/tidb/pull/6460/files would be
-// compatible during TiDB upgrading.
-func (cis *CIStr) UnmarshalJSON(b []byte) error {
-	type T CIStr
-	if err := json.Unmarshal(b, (*T)(cis)); err == nil {
-		return nil
-	}
-
-	// Unmarshal CIStr from a single string.
-	err := json.Unmarshal(b, &cis.O)
-	if err != nil {
-		return errors.Trace(err)
-	}
-	cis.L = strings.ToLower(cis.O)
-	return nil
-}
-
-// MemoryUsage return the memory usage of CIStr
-func (cis *CIStr) MemoryUsage() (sum int64) {
-	if cis == nil {
-		return
-	}
-
-	return int64(unsafe.Sizeof(cis.O))*2 + int64(len(cis.O)+len(cis.L))
 }
 
 // TableItemID is composed by table ID and column/index ID
