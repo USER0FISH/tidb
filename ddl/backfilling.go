@@ -611,7 +611,11 @@ func (dc *ddlCtx) writePhysicalTableRecord(sessPool *sessionPool, t table.Physic
 
 	// variable.ddlReorgWorkerCounter can be modified by system variable "tidb_ddl_reorg_worker_cnt".
 	workerCnt := variable.GetDDLReorgWorkerCounter()
-	backfillWorkers := make([]*backfillWorker, 0, workerCnt*4)
+	if variable.EnableDDLService.Load() {
+		workerCnt = workerCnt * 4
+	}
+
+	backfillWorkers := make([]*backfillWorker, 0, workerCnt)
 	defer func() {
 		closeBackfillWorkers(backfillWorkers)
 	}()
