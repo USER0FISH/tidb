@@ -466,7 +466,7 @@ func tryDecodeToHandleString(key kv.Key) string {
 
 // handleRangeTasks sends tasks to workers, and returns remaining kvRanges that is not handled.
 func (dc *ddlCtx) handleRangeTasks(sessPool *sessionPool, t table.Table, workers []*backfillWorker, reorgInfo *reorgInfo,
-	totalAddedCount *int64, kvRanges []kv.KeyRange) ([]kv.KeyRange, error) {
+	totalAddedCount *int64, kvRanges []kv.KeyRange, sessVars *variable.SessionVars) ([]kv.KeyRange, error) {
 	batchTasks := make([]*reorgBackfillTask, 0, len(workers))
 	physicalTableID := reorgInfo.PhysicalTableID
 
@@ -479,7 +479,7 @@ func (dc *ddlCtx) handleRangeTasks(sessPool *sessionPool, t table.Table, workers
 	// Build reorg tasks.
 	for i, keyRange := range kvRanges {
 		endKey := keyRange.EndKey
-		endK, err := getRangeEndKey(reorgInfo.d.jobContext(reorgInfo.Job), workers[0].sessCtx.GetStore(), workers[0].priority, prefix, keyRange.StartKey, endKey)
+		endK, err := getRangeEndKey(reorgInfo.d.jobContext(reorgInfo.Job), workers[0].sessCtx.GetStore(), workers[0].priority, prefix, keyRange.StartKey, endKey, sessVars)
 		if err != nil {
 			logutil.BgLogger().Info("[ddl] send range task to workers, get reverse key failed", zap.Error(err))
 		} else {
@@ -723,7 +723,7 @@ func (dc *ddlCtx) writePhysicalTableRecord(sessPool *sessionPool, t table.Physic
 				return errors.New(ingest.LitErrGetBackendFail)
 			}
 		}
-		remains, err := dc.handleRangeTasks(sessPool, t, backfillWorkers, reorgInfo, &totalAddedCount, kvRanges)
+		remains, err := dc.handleRangeTasks(sessPool, t, backfillWorkers, reorgInfo, &totalAddedCount, kvRanges, sessCtx.GetSessionVars())
 		if err != nil {
 			return errors.Trace(err)
 		}
@@ -740,7 +740,7 @@ func (dc *ddlCtx) writePhysicalTableRecord(sessPool *sessionPool, t table.Physic
 type recordIterFunc func(h kv.Handle, rowKey kv.Key, rawRecord []byte) (more bool, err error)
 
 func iterateSnapshotKeys(ctx *JobContext, store kv.Storage, priority int, keyPrefix kv.Key, version uint64,
-	startKey kv.Key, endKey kv.Key, fn recordIterFunc) error {
+	startKey kv.Key, endKey kv.Key, sessVars *variable.SessionVars, fn recordIterFunc) error {
 	isRecord := tablecodec.IsRecordKey(keyPrefix.Next())
 	var firstKey kv.Key
 	if startKey == nil {
@@ -758,6 +758,7 @@ func iterateSnapshotKeys(ctx *JobContext, store kv.Storage, priority int, keyPre
 
 	ver := kv.Version{Ver: version}
 	snap := store.GetSnapshot(ver)
+	hackSetTxn(sessVars, snap)
 	snap.SetOption(kv.Priority, priority)
 	snap.SetOption(kv.RequestSourceInternal, true)
 	snap.SetOption(kv.RequestSourceType, ctx.ddlJobSourceType())
@@ -802,8 +803,9 @@ func iterateSnapshotKeys(ctx *JobContext, store kv.Storage, priority int, keyPre
 }
 
 // getRegionEndKey gets the actual end key for the range of [startKey, endKey].
-func getRangeEndKey(ctx *JobContext, store kv.Storage, priority int, keyPrefix kv.Key, startKey, endKey kv.Key) (kv.Key, error) {
+func getRangeEndKey(ctx *JobContext, store kv.Storage, priority int, keyPrefix kv.Key, startKey, endKey kv.Key, sessVars *variable.SessionVars) (kv.Key, error) {
 	snap := store.GetSnapshot(kv.MaxVersion)
+	hackSetTxn(sessVars, snap)
 	snap.SetOption(kv.Priority, priority)
 	if tagger := ctx.getResourceGroupTaggerForTopSQL(); tagger != nil {
 		snap.SetOption(kv.ResourceGroupTagger, tagger)

@@ -777,6 +777,7 @@ func (w *worker) HandleDDLJobTable(d *ddlCtx, job *model.Job) (int64, error) {
 	w.setDDLLabelForTopSQL(job)
 	w.setDDLSourceForDiagnosis(job)
 	jobContext := w.jobContext(job)
+	hackSetTxn(w.sess.GetSessionVars(), txn)
 	if tagger := w.getResourceGroupTaggerForTopSQL(job); tagger != nil {
 		txn.SetOption(kv.ResourceGroupTagger, tagger)
 	}
@@ -916,6 +917,7 @@ func (w *worker) handleDDLJobQueue(d *ddlCtx) error {
 			w.setDDLLabelForTopSQL(job)
 			w.setDDLSourceForDiagnosis(job)
 			jobContext := w.jobContext(job)
+			hackSetTxn(w.sess.GetSessionVars(), txn)
 			if tagger := w.getResourceGroupTaggerForTopSQL(job); tagger != nil {
 				txn.SetOption(kv.ResourceGroupTagger, tagger)
 			}
