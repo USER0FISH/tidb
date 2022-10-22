@@ -1123,6 +1123,7 @@ var (
 	// EnableForeignKey indicates whether to enable foreign key feature.
 	EnableForeignKey    = atomic.NewBool(false)
 	EnableRCReadCheckTS = atomic.NewBool(false)
+	EnableDDLService    = atomic.NewBool(false)
 )
 
 var (

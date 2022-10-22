@@ -167,6 +167,10 @@ var (
 )
 
 func main() {
+	if os.Getenv("ENABLE_DDL_SRV") == "1" {
+		variable.EnableDDLService.Store(true)
+	}
+
 	help := flag.Bool("help", false, "show the usage")
 	flag.Parse()
 	if *help {

@@ -36,6 +36,7 @@ import (
 	"github.com/pingcap/failpoint"
 	"github.com/pingcap/kvproto/pkg/kvrpcpb"
 	"github.com/pingcap/tidb/config"
+	"github.com/pingcap/tidb/ddl/ddlservice"
 	"github.com/pingcap/tidb/ddl/ingest"
 	"github.com/pingcap/tidb/ddl/syncer"
 	"github.com/pingcap/tidb/ddl/util"
@@ -85,6 +86,8 @@ const (
 
 	reorgWorkerCnt   = 10
 	generalWorkerCnt = 1
+
+	DDLSrvNodePrefix = "srv-node-"
 )
 
 // OnExist specifies what to do when a new object has a name collision.
@@ -227,6 +230,7 @@ type ddl struct {
 	generalDDLWorkerPool *workerPool
 	// get notification if any DDL coming.
 	ddlJobCh chan struct{}
+	srv      *ddlservice.ServiceNode
 }
 
 // waitSchemaSyncedController is to control whether to waitSchemaSynced or not.
@@ -515,6 +519,10 @@ func newDDL(ctx context.Context, options ...Option) *ddl {
 	}
 
 	id := uuid.New().String()
+	if variable.EnableDDLService.Load() {
+		id = DDLSrvNodePrefix + id
+	}
+
 	var manager owner.Manager
 	var schemaSyncer syncer.SchemaSyncer
 	var deadLockCkr util.DeadTableLockChecker
@@ -567,6 +575,14 @@ func newDDL(ctx context.Context, options ...Option) *ddl {
 		limitJobCh:        make(chan *limitJobTask, batchAddingJobs),
 		enableTiFlashPoll: atomicutil.NewBool(true),
 		ddlJobCh:          make(chan struct{}, 100),
+	}
+
+	if variable.EnableDDLService.Load() {
+		d.srv = ddlservice.NewOneClusterServiceNode(
+			ddlservice.NewEtcdMetaStore(d.etcdCli),
+			d.uuid,
+			d.retireNonServiceOwner,
+		)
 	}
 
 	// Register functions for enable/disable ddl when changing system variable `tidb_enable_ddl`.
@@ -682,6 +698,12 @@ func (d *ddl) Start(ctxPool *pools.ResourcePool) error {
 
 	// Start some background routine to manage TiFlash replica.
 	d.wg.Run(d.PollTiFlashRoutine)
+	if d.srv != nil {
+		logutil.BgLogger().Info("ddl service enabled, start service node", zap.String("ddlID", d.uuid))
+		if err := d.srv.Start(); err != nil {
+			return err
+		}
+	}
 
 	ingest.InitGlobalLightningEnv()
 
@@ -728,6 +750,42 @@ func (d *ddl) GetNextDDLSeqNum() (uint64, error) {
 		return err
 	})
 	return count, err
+}
+
+func (d *ddl) retireNonServiceOwner(ctx context.Context) bool {
+	resp, err := d.etcdCli.Get(ctx, DDLOwnerKey, clientv3.WithPrefix())
+	if err != nil {
+		logutil.BgLogger().Error("failed to get all ddl owner keys",
+			zap.Error(err),
+			zap.Strings("etcdEndPoints", d.etcdCli.Endpoints()),
+		)
+		return false
+	}
+
+	doResign := false
+	for _, kv := range resp.Kvs {
+		ownerID := string(kv.Value)
+		if strings.HasPrefix(ownerID, DDLSrvNodePrefix) {
+			continue
+		}
+
+		doResign = true
+		lockKey := string(kv.Key)
+		logutil.BgLogger().Info("non service ddl lock detected, delete it",
+			zap.String("lockKey", lockKey),
+			zap.String("lockOwnerID", ownerID))
+		_, err = d.etcdCli.Delete(ctx, lockKey)
+		if err != nil {
+			logutil.BgLogger().Error("failed to retire ddl lock which is not in ddl service",
+				zap.Error(err),
+				zap.Strings("etcdEndPoints", d.etcdCli.Endpoints()),
+				zap.String("lockKey", lockKey),
+				zap.String("lockOwnerID", ownerID),
+			)
+		}
+	}
+
+	return doResign
 }
 
 func (d *ddl) close() {

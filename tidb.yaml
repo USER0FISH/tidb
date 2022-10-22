@@ -1,0 +1,210 @@
+apiVersion: pingcap.com/v1alpha1
+kind: TidbCluster
+metadata:
+  name: basic
+spec:
+  version: v6.3.0
+  timezone: UTC
+  pvReclaimPolicy: Retain
+  enableDynamicConfiguration: true
+  configUpdateStrategy: RollingUpdate
+  discovery: {}
+  helper:
+    image: alpine:3.16.0
+  pd:
+    baseImage: pingcap/pd
+    maxFailoverCount: 0
+    replicas: 1
+    # storageClassName: local-path
+    requests:
+      storage: "1Gi"
+    config: {}
+  tikv:
+    baseImage: pingcap/tikv
+    maxFailoverCount: 0
+    evictLeaderTimeout: 1m
+    replicas: 3
+    # storageClassName: local-path
+    requests:
+      storage: "50Gi"
+      memory: "12Gi"
+    config:
+      storage:
+        reserve-space: "10240MB"
+      rocksdb:
+        max-open-files: 82920
+      raftdb:
+        max-open-files: 82920
+    affinity:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+            - matchExpressions:
+                - key: instance
+                  operator: In
+                  values:
+                    - tp-tikv
+  tidb:
+    baseImage: pingcap/tidb
+    requests:
+      memory: "12Gi"
+    maxFailoverCount: 0
+    replicas: 1
+    service:
+      type: NodePort
+    config: {}
+    affinity:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+            - matchExpressions:
+                - key: instance
+                  operator: In
+                  values:
+                    - tp-tidb
+#  tiproxy:
+#    baseImage: xhebox/tiproxy
+#    version: latest
+#    imagePullPolicy: Always
+#    replicas: 1
+#    requests:
+#      storage: "1Gi"
+#    service:
+#      type: NodePort
+#    affinity:
+#      nodeAffinity:
+#        requiredDuringSchedulingIgnoredDuringExecution:
+#          nodeSelectorTerms:
+#            - matchExpressions:
+#                - key: instance
+#                  operator: In
+#                  values:
+#                    - tp-tidb
+---
+
+apiVersion: pingcap.com/v1alpha1
+kind: TidbCluster
+metadata:
+  name: apsrv
+spec:
+  configUpdateStrategy: RollingUpdate
+  version: v6.3.0
+  timezone: UTC
+  pvReclaimPolicy: Delete
+  discovery: {}
+  cluster:
+    name: basic
+  tikv:
+    affinity:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+            - matchExpressions:
+                - key: instance
+                  operator: In
+                  values:
+                    - ap-tikv
+    baseImage: pingcap/tikv
+    maxFailoverCount: 0
+    evictLeaderTimeout: 1m
+    replicas: 3
+    # storageClassName: local-path
+    requests:
+      storage: "50Gi"
+      memory: "12Gi"
+    config:
+      storage:
+        reserve-space: "10240MB"
+      rocksdb:
+        max-open-files: 82920
+      raftdb:
+        max-open-files: 82920
+      server:
+        labels: {"service": "ap"} 
+  tidb:
+    baseImage: cclcwangchao/tidb
+    requests:
+      memory: "20Gi"
+    version: v6.3.1
+    affinity:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+            - matchExpressions:
+                - key: instance
+                  operator: In
+                  values:
+                    - ap-tidb
+    env:
+      - name: ENABLE_DDL_SRV
+        value: "1"
+    maxFailoverCount: 0
+    replicas: 1
+    service:
+      type: NodePort
+    config: {}
+
+---
+
+apiVersion: pingcap.com/v1alpha1
+kind: TidbMonitor
+metadata:
+  name: view
+spec:
+  clusters:
+    - name: basic
+    - name: apsrv
+  persistent: true
+  storage: 5G
+  prometheus:
+    baseImage: prom/prometheus
+    version: v2.27.1
+    service:
+      type: NodePort
+  grafana:
+    baseImage: grafana/grafana
+    version: 7.5.11
+    service:
+      type: NodePort
+  initializer:
+    baseImage: pingcap/tidb-monitor-initializer
+    version: v6.1.0
+  reloader:
+    baseImage: pingcap/tidb-monitor-reloader
+    version: v1.0.1
+  prometheusReloader:
+    baseImage: quay.io/prometheus-operator/prometheus-config-reloader
+    version: v0.49.0
+  imagePullPolicy: IfNotPresent
+
+---
+
+apiVersion: pingcap.com/v1alpha1
+kind: TidbMonitor
+metadata:
+  name: apview
+spec:
+  clusters:
+    - name: apsrv
+  persistent: true
+  storage: 5G
+  prometheus:
+    baseImage: prom/prometheus
+    version: v2.27.1
+    service:
+      type: NodePort
+  grafana:
+    baseImage: grafana/grafana
+    version: 7.5.11
+    service:
+      type: NodePort
+  initializer:
+    baseImage: pingcap/tidb-monitor-initializer
+    version: v6.1.0
+  reloader:
+    baseImage: pingcap/tidb-monitor-reloader
+    version: v1.0.1
+  prometheusReloader:
+    baseImage: quay.io/prometheus-operator/prometheus-config-reloader
+    version: v0.49.0
+  imagePullPolicy: IfNotPresent
