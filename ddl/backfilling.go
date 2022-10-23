@@ -320,6 +320,10 @@ func (w *backfillWorker) run(d *ddlCtx, bf backfiller, job *model.Job) {
 
 		// Dynamic change batch size.
 		w.batchCnt = int(variable.GetDDLReorgBatchSize())
+		if variable.EnableDDLService.Load() {
+			w.batchCnt *= 4
+		}
+
 		result := w.handleBackfillTask(d, task, bf)
 		w.resultCh <- result
 	}
@@ -632,6 +636,10 @@ func (dc *ddlCtx) writePhysicalTableRecord(sessPool *sessionPool, t table.Physic
 			logutil.BgLogger().Error("[ddl] load DDL reorganization variable failed", zap.Error(err))
 		}
 		workerCnt = variable.GetDDLReorgWorkerCounter()
+		if variable.EnableDDLService.Load() {
+			workerCnt = workerCnt * 4
+		}
+
 		rowFormat := variable.GetDDLReorgRowFormat()
 		// If only have 1 range, we can only start 1 worker.
 		if len(kvRanges) < int(workerCnt) {

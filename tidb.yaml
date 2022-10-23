@@ -45,7 +45,8 @@ spec:
                   values:
                     - tp-tikv
   tidb:
-    baseImage: pingcap/tidb
+    baseImage: cclcwangchao/tidb
+    version: v6.3.2
     requests:
       memory: "12Gi"
     maxFailoverCount: 0
@@ -123,9 +124,9 @@ spec:
         labels: {"service": "ap"} 
   tidb:
     baseImage: cclcwangchao/tidb
+    version: v6.3.2
     requests:
       memory: "20Gi"
-    version: v6.3.1
     affinity:
       nodeAffinity:
         requiredDuringSchedulingIgnoredDuringExecution:
