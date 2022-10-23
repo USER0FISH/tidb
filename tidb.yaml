@@ -46,7 +46,7 @@ spec:
                     - tp-tikv
   tidb:
     baseImage: cclcwangchao/tidb
-    version: v6.3.2
+    version: v6.3.3
     requests:
       memory: "12Gi"
     maxFailoverCount: 0
@@ -124,7 +124,7 @@ spec:
         labels: {"service": "ap"} 
   tidb:
     baseImage: cclcwangchao/tidb
-    version: v6.3.2
+    version: v6.3.3
     requests:
       memory: "20Gi"
     affinity:
