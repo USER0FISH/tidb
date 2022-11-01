@@ -21,7 +21,6 @@ import (
 	"github.com/danjacques/gofslock/fslock"
 	"github.com/pingcap/errors"
 	"github.com/pingcap/log"
-	"github.com/pingcap/tidb/config"
 	"github.com/pingcap/tidb/parser/terror"
 	"go.uber.org/zap"
 	"golang.org/x/sync/singleflight"
@@ -37,28 +36,8 @@ const (
 	recordDir = "record"
 )
 
-// CheckAndInitTempDir check whether the temp directory is existed.
-// If not, initializes the temp directory.
-func CheckAndInitTempDir(path string) (err error) {
-	_, err, _ = sf.Do("tempDir", func() (value interface{}, err error) {
-		if !checkTempDirExist(path) {
-			log.Info("Tmp-storage-path not found. Try to initialize TempDir.")
-			err = initialzeTempDirWithPath(path)
-		}
-		return
-	})
-	return
-}
-
-func checkTempDirExist(path string) bool {
-	_, err := os.Stat(path)
-	if err != nil && !os.IsExist(err) {
-		return false
-	}
-	return true
-}
-
-func initialzeTempDirWithPath(path string) error {
+// InitializeTempDir initializes the temp directory.
+func InitializeTempDir(path string) error {
 	_, err := os.Stat(path)
 	if err != nil && !os.IsExist(err) {
 		err = os.MkdirAll(path, 0750)
@@ -102,11 +81,6 @@ func initialzeTempDirWithPath(path string) error {
 		}()
 	}
 	return nil
-}
-
-// InitializeTempDir initializes the temp directory.
-func InitializeTempDir() error {
-	return initialzeTempDirWithPath(config.GetGlobalConfig().Instance.TmpDir.Load())
 }
 
 // CleanUp releases the directory lock when exiting TiDB or changing tmpdir.

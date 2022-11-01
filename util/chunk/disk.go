@@ -111,9 +111,6 @@ func NewListInDisk(fieldTypes []*types.FieldType) *ListInDisk {
 
 func (l *ListInDisk) initDiskFile() (err error) {
 	tmpdir := config.GetGlobalConfig().Instance.TmpDir.Load()
-	if err = disk.CheckAndInitTempDir(tmpdir); err != nil {
-		return
-	}
 	if err = l.dataFile.initWithFileName(tmpdir, defaultChunkListInDiskPath+strconv.Itoa(l.diskTracker.Label())); err != nil {
 		return
 	}
